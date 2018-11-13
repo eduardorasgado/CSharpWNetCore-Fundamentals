@@ -19,6 +19,9 @@ namespace CoreEscuela.Entidades
         public string Pais { get; set; }
         public string Ciudad { set; get; }
         
+        // del TipoEscuelas que es un ENUM y se encuentra en entidades tambien
+        public TiposEscuelas TipoEscuela { get; set; }
+        
         // Constructor de la escuela
         //public Escuela(string nombre, int año)
         //{
@@ -29,5 +32,10 @@ namespace CoreEscuela.Entidades
         // Constructor de tipo igualacion por tupla
         public Escuela(string nombre, int año) => (Nombre, AñoCreacion) = (nombre, año);
 
+        public override string ToString()
+        {
+            // concatenacion 
+            return $"Nombre: {Nombre}, Tipo: {TipoEscuela}\n Pais: {Pais}, Ciudad: {Ciudad}";
+        }
     }
 }
