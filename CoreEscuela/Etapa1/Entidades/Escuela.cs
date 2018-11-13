@@ -32,10 +32,15 @@ namespace CoreEscuela.Entidades
         // Constructor de tipo igualacion por tupla
         public Escuela(string nombre, int año) => (Nombre, AñoCreacion) = (nombre, año);
 
+        // Segundo constructor posible parametros por defecto
+        public Escuela(string nombre, int año, TiposEscuelas tipo, string pais="Mexico", string ciudad = "")
+            => (Nombre, AñoCreacion, TipoEscuela, Pais, Ciudad) = (nombre, año, tipo, pais, ciudad);
+        
+        // sobreescrbiendo el metodo de Escuela: sobrecarga
         public override string ToString()
         {
             // concatenacion 
-            return $"Nombre: {Nombre}, Tipo: {TipoEscuela}\n Pais: {Pais}, Ciudad: {Ciudad}";
+            return $"Nombre: \"{Nombre.Split(": ")[1]}\", Tipo: {TipoEscuela}{System.Environment.NewLine} Pais: {Pais}, Ciudad: {Ciudad}";
         }
     }
 }
