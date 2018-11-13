@@ -20,11 +20,14 @@ namespace CoreEscuela.Entidades
         public string Ciudad { set; get; }
         
         // Constructor de la escuela
-        public Escuela(string nombre, int año)
-        {
-            this.nombre = nombre;
-            this.AñoCreacion = año;
-        }
-        
+        //public Escuela(string nombre, int año)
+        //{
+        //    this.nombre = nombre;
+        //    this.AñoCreacion = año;
+        //}
+
+        // Constructor de tipo igualacion por tupla
+        public Escuela(string nombre, int año) => (Nombre, AñoCreacion) = (nombre, año);
+
     }
 }
