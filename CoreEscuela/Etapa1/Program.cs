@@ -21,7 +21,8 @@ namespace Etapa1
             Console.WriteLine(escuela);
             
             // Concatenando y split a una variable string
-            Console.WriteLine("La " + escuela.Nombre.Split(": ")[1] + " ubicada en " + escuela.Pais + " de tipo: " + escuela.TipoEscuela);
+            Console.WriteLine("La " + escuela.Nombre.Split(": ")[1] +
+                              " ubicada en " + escuela.Pais + " de tipo: " + escuela.TipoEscuela);
             
             var escuela2 = new Escuela("C# Academy", 2014, TiposEscuelas.Online, ciudad: "Monterrey");
             Console.WriteLine(escuela2);
