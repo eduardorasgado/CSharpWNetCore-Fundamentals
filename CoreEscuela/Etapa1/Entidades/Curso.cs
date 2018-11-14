@@ -4,16 +4,18 @@ namespace CoreEscuela.Entidades
 {
     public class Curso
     {
-        private string UniqueId { get; set; }
+        public string UniqueId { get; private set; }
         public string Nombre { get; set; }
         
         public TiposJornadas Jornada { get; set; }
 
+        // constructor
+        // creando un id autogenerado
+        public Curso() => UniqueId = Guid.NewGuid().ToString();
 
-        public Curso()
+        public override string ToString()
         {
-            // creando un id autogenerado
-            UniqueId = Guid.NewGuid().ToString();
+            return $"{Nombre}, {UniqueId}";
         }
     }
 }
