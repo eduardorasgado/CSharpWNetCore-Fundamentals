@@ -56,12 +56,17 @@ namespace Etapa1
             var enter = Console.ReadLine();
             
             // llamando al metodo de la clase Program
-            imprimirCursos(arregloCursos);
+            ImprimirCursosWhile(arregloCursos);
+            Console.WriteLine("---------");
+            ImprimirCursosDoWhile(arregloCursos);
+            Console.WriteLine("---------");
+            ImprimirCursosFor(arregloCursos);
 
         }
-        
-        private static void imprimirCursos(Curso[] arregloCursos)
+
+        private static void ImprimirCursosWhile(Curso[] arregloCursos)
         {
+            Console.WriteLine("Ciclo While");
             // iterando con un ciclo while
             var counter = 0;
             while (counter < arregloCursos.Length)
@@ -69,14 +74,30 @@ namespace Etapa1
                 Console.WriteLine(arregloCursos[counter]);
                 counter++;
             }
-            
-            Console.WriteLine("---------");
+        }
+
+        private static void ImprimirCursosFor(Curso[] arregloCursos)
+        {
+            Console.WriteLine("Ciclo For");
             // iterando entre los miembros del arreglo para 
             // imprimirlos
             for (var i = 0; i < arregloCursos.Length; i++)
             {
                 Console.WriteLine(arregloCursos[i]);
             }
+        }
+        
+        private static void ImprimirCursosDoWhile(Curso[] arregloCursos)
+        {
+            Console.WriteLine("Ciclo Do while");
+            // El ciclo do while se tiene que invocar al menos
+            // una vez
+            var counter = 0;
+            do
+            {
+                Console.WriteLine(arregloCursos[counter]);
+                counter++;
+            } while (counter < arregloCursos.Length);
         }
     }
 }
