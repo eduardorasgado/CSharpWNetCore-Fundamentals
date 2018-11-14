@@ -61,6 +61,8 @@ namespace Etapa1
             ImprimirCursosDoWhile(arregloCursos);
             Console.WriteLine("---------");
             ImprimirCursosFor(arregloCursos);
+            Console.WriteLine("---------");
+            ImprimirCursosForEach(arregloCursos);
 
         }
 
@@ -75,17 +77,6 @@ namespace Etapa1
                 counter++;
             }
         }
-
-        private static void ImprimirCursosFor(Curso[] arregloCursos)
-        {
-            Console.WriteLine("Ciclo For");
-            // iterando entre los miembros del arreglo para 
-            // imprimirlos
-            for (var i = 0; i < arregloCursos.Length; i++)
-            {
-                Console.WriteLine(arregloCursos[i]);
-            }
-        }
         
         private static void ImprimirCursosDoWhile(Curso[] arregloCursos)
         {
@@ -98,6 +89,29 @@ namespace Etapa1
                 Console.WriteLine(arregloCursos[counter]);
                 counter++;
             } while (counter < arregloCursos.Length);
+        }
+        
+        private static void ImprimirCursosFor(Curso[] arregloCursos)
+        {
+            Console.WriteLine("Ciclo For");
+            // iterando entre los miembros del arreglo para 
+            // imprimirlos
+            for (var i = 0; i < arregloCursos.Length; i++)
+            {
+                Console.WriteLine(arregloCursos[i]);
+            }
+        }
+
+        private static void ImprimirCursosForEach(Curso[] arregloCursos)
+        {
+            Console.WriteLine("ForEach loop");
+            // Iteración sobre un arreglo con un foreach
+            // Es muy seguro, pero no podemos tener el control del
+            // indice del arreglo
+            foreach (var e in arregloCursos)
+            {
+                Console.WriteLine(e);
+            }
         }
     }
 }

@@ -1,2 +1,2 @@
 # CSharpWNetCore-Fundamentals
-C♯  and Net Core Fundamentals. Winter 2018
+C♯  and Net Core Fundamentals. Fall 2018
