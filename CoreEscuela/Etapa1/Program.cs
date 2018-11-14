@@ -26,6 +26,12 @@ namespace Etapa1
             
             var escuela2 = new Escuela("C# Academy", 2014, TiposEscuelas.Online, ciudad: "Monterrey");
             Console.WriteLine(escuela2);
+            
+            // creando cursos
+            var curso1 =  new Curso()
+            {
+                Nombre = "101"
+            };
         }
     }
 }
