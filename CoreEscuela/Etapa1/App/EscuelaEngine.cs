@@ -29,7 +29,16 @@ namespace CoreEscuela.App
 
             CargarCursos();
             CargarAsignaturas();
-            CargarAlumnos();
+            var listaAlumni = CargarAlumnos();
+            // gaurdando la misma lista de alumnos para cada
+            // curso
+            foreach (var curso in Escuela.CursosLista)
+            {
+                // estamos agregando por primera vez
+                // Es preferible utilizar el operador de asig-
+                // nacion en lugar de AddRange
+                curso.Alumnos = listaAlumni.ToList();
+            }
             CargarEvaluaciones();
         }
 
@@ -40,7 +49,7 @@ namespace CoreEscuela.App
 
         private void CargarAsignaturas()
         {   
-            foreach (var c in Escuela.CursosLista)
+            foreach (var curso in Escuela.CursosLista)
             {
                 // cargando las asignaturas para cada curso
                 var listaAsignaturas = new List<Asignatura>()
@@ -50,7 +59,7 @@ namespace CoreEscuela.App
                     new Asignatura{ Nombre="Electrónica Digital" },
                     new Asignatura{ Nombre = "Lenguajs de Programación" }
                 };
-                c.Asignaturas.AddRange(listaAsignaturas);
+                curso.Asignaturas = listaAsignaturas;
             }
         }
 
