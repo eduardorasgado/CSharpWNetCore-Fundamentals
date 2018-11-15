@@ -1,5 +1,6 @@
-﻿using System;
+﻿// para poder usar WriteLine por si solo
 using CoreEscuela.Entidades;
+using static System.Console;
 
 namespace Etapa1
 {
@@ -9,7 +10,7 @@ namespace Etapa1
         {
             var escuela = new Escuela("Cpp Academy", 2016);
             
-            Console.WriteLine(escuela.Nombre);
+            WriteLine(escuela.Nombre);
 
             escuela.Pais = "Mexico";
             escuela.Ciudad = "CDMX";
@@ -18,100 +19,105 @@ namespace Etapa1
             escuela.TipoEscuela = TiposEscuelas.Online;
 
             // llamando el metodo ToString de forma implicita
-            Console.WriteLine(escuela);
+            WriteLine(escuela);
             
             // Concatenando y split a una variable string
-            Console.WriteLine("La " + escuela.Nombre.Split(": ")[1] +
+            WriteLine("La " + escuela.Nombre.Split(": ")[1] +
                               " ubicada en " + escuela.Pais + " de tipo: " + escuela.TipoEscuela);
             
             var escuela2 = new Escuela("C# Academy", 2014, TiposEscuelas.Online, ciudad: "Monterrey");
-            Console.WriteLine(escuela2);
+            WriteLine(escuela2);
             
             // arreglo estatico de cursos
-            var arregloCursos = new Curso[3];
-            
-            // creando instancias de cursos
-            // y las introducimos en el arreglo
-            arregloCursos[0] = new Curso()
+            //var arregloCursos = new Curso[]
+            Curso[] arregloCursos = 
             {
-                Nombre = "101"
-            };
-            
-            arregloCursos[1] = new Curso
-            {
-                Nombre = "201"
-            };
-            
-            var curso3 = new Curso()
-            {
-                Nombre = "301"
+                // creando instancias de cursos
+                // y las introducimos en el arreglo
+                new Curso{ Nombre = "101" },
+                new Curso{ Nombre = "201" },
+                new Curso{ Nombre = "301" }
             };
 
-            arregloCursos[2] = curso3;
+            escuela.Cursos = arregloCursos;
+            //escuela.Cursos = null;
+            //escuela = null;
             
-            Console.WriteLine("=============");
+            WriteLine("=============");
 
-            Console.WriteLine("Presione enter: ");            
+            WriteLine("Presione enter: ");            
             // leer una linea de entrada del usuario
-            var enter = Console.ReadLine();
+            var enter = ReadLine();
             
             // llamando al metodo de la clase Program
             ImprimirCursosWhile(arregloCursos);
-            Console.WriteLine("---------");
+            WriteLine("---------");
             ImprimirCursosDoWhile(arregloCursos);
-            Console.WriteLine("---------");
+            WriteLine("---------");
             ImprimirCursosFor(arregloCursos);
-            Console.WriteLine("---------");
+            WriteLine("---------");
             ImprimirCursosForEach(arregloCursos);
+            WriteLine("---------");
+
+            ImprimirCursosEscuela(escuela);
 
         }
 
         private static void ImprimirCursosWhile(Curso[] arregloCursos)
         {
-            Console.WriteLine("Ciclo While");
+            WriteLine("Ciclo While");
             // iterando con un ciclo while
             var counter = 0;
             while (counter < arregloCursos.Length)
             {
-                Console.WriteLine(arregloCursos[counter]);
+                WriteLine(arregloCursos[counter]);
                 counter++;
             }
         }
         
         private static void ImprimirCursosDoWhile(Curso[] arregloCursos)
         {
-            Console.WriteLine("Ciclo Do while");
+            WriteLine("Ciclo Do while");
             // El ciclo do while se tiene que invocar al menos
             // una vez
             var counter = 0;
             do
             {
-                Console.WriteLine(arregloCursos[counter]);
+                WriteLine(arregloCursos[counter]);
                 counter++;
             } while (counter < arregloCursos.Length);
         }
         
         private static void ImprimirCursosFor(Curso[] arregloCursos)
         {
-            Console.WriteLine("Ciclo For");
+            WriteLine("Ciclo For");
             // iterando entre los miembros del arreglo para 
             // imprimirlos
             for (var i = 0; i < arregloCursos.Length; i++)
             {
-                Console.WriteLine(arregloCursos[i]);
+                WriteLine(arregloCursos[i]);
             }
         }
 
         private static void ImprimirCursosForEach(Curso[] arregloCursos)
         {
-            Console.WriteLine("ForEach loop");
+            WriteLine("ForEach loop");
             // Iteración sobre un arreglo con un foreach
             // Es muy seguro, pero no podemos tener el control del
             // indice del arreglo
             foreach (var e in arregloCursos)
             {
-                Console.WriteLine(e);
+                WriteLine(e);
             }
+        }
+
+        private static void ImprimirCursosEscuela(Escuela escuela)
+        {
+            WriteLine("-Cursos de la escuela 1-");
+            // merging sequential check with ?
+            // this is same as:
+            // escuela != null && escuela.Cursos != null
+            if(escuela?.Cursos != null) ImprimirCursosForEach(escuela.Cursos);
         }
     }
 }

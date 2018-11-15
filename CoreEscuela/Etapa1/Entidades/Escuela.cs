@@ -1,3 +1,5 @@
+using System;
+
 namespace CoreEscuela.Entidades
 {
     public class Escuela
@@ -22,6 +24,9 @@ namespace CoreEscuela.Entidades
         // del TipoEscuelas que es un ENUM y se encuentra en entidades tambien
         public TiposEscuelas TipoEscuela { get; set; }
         
+        // array de objectos de la clase curso
+        public Curso[] Cursos { get; set; }
+        
         // Constructor de la escuela
         //public Escuela(string nombre, int año)
         //{
@@ -44,7 +49,7 @@ namespace CoreEscuela.Entidades
         {
             // concatenacion 
             return $"Nombre: \"{Nombre.Split(": ")[1]}\"," +
-                   $" Tipo: {TipoEscuela}{System.Environment.NewLine}" +
+                   $" Tipo: {TipoEscuela}{Environment.NewLine}" +
                    $" Pais: {Pais}, Ciudad: {Ciudad}";
         }
     }
