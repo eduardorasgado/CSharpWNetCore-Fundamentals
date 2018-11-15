@@ -82,6 +82,11 @@ namespace Etapa1
             AgregarElementosALista(escuela.CursosLista);
             
             ImprimiendoColeccionesLista(escuela);
+            
+            // Eliminando todos los elementos de la lista
+            EliminarElementosDeLista(escuela.CursosLista);
+            
+            ImprimiendoColeccionesLista(escuela);
 
         }
 
@@ -205,6 +210,12 @@ namespace Etapa1
             // solamente introducioendo los elementos que la
             // conforman
             cursosLista.AddRange(cursosAdicionales);
+        }
+
+        private static void EliminarElementosDeLista(List<Curso> cursosLista)
+        {
+            // remover todos los elementos de la lista
+            cursosLista.Clear();
         }
     }
 }
