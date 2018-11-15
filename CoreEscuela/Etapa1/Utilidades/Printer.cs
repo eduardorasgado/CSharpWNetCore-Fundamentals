@@ -20,5 +20,18 @@ namespace CoreEscuela.Utilidades
             var chain = "".PadLeft(size, '=');
             WriteLine(chain);
         }
+
+        /// <summary>
+        /// Trazando un titulo del tamaño de la cadena que
+        /// le estemos enviando
+        /// </summary>
+        /// <param name="title"></param>
+        public static void PrintTitle(string title)
+        {
+            PrintLine(title.Length);
+            WriteLine(title);
+            PrintLine(title.Length);
+            
+        }
     }
 }

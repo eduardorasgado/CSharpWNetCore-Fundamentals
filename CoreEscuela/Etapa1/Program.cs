@@ -22,20 +22,22 @@ namespace CoreEscuela
             engine.Inicializar();
             
             MostrarCursosEscuela(engine.Escuela);
-        }    
+        }
 
+        /// <summary>
+        /// Mostrar en pantalla unn titulo referente a mostrar CUrsos
+        /// de la escuela pero de forma decorada
+        /// </summary>
+        /// <param name="escuela"></param>
         private static void MostrarCursosEscuela(Escuela escuela)
         {
-            Console.WriteLine("---Imprimiendo cursos de la Escuela---");
-            Printer.PrintLine();
-            
+            Printer.PrintTitle("cursos de la Escuela");
+
             var lista = escuela.CursosLista;
             foreach (var e in lista)
             {
                 Console.WriteLine(e);
             }
-            
-            Printer.PrintLine();
         }
 
         /// <summary>
