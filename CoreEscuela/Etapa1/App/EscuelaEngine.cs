@@ -35,9 +35,17 @@ namespace CoreEscuela.App
             //TestingDeAleatoriedad();
         }
 
+        /// <summary>
+        /// Cada curso tiene una lista de asignaturas y una lista de
+        /// alumnos, por otro lado cada evaluacion esta mapeada con un alumno
+        /// y una asignatura
+        /// 5 evaluaciones por asignatura
+        /// Por cada alumno de cada curso
+        /// Las notas estan entre 0.0 y 5.0
+        /// </summary>
         private void CargarEvaluaciones()
         {
-            //
+            // RETO
         }
 
         private void CargarAsignaturas()
