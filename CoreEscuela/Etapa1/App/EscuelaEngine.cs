@@ -38,7 +38,12 @@ namespace CoreEscuela.App
 
         private void CargarAsignaturas()
         {
-            throw new System.NotImplementedException();
+            foreach (var c in Escuela.CursosLista)
+            {
+                // cargando las asignaturas para cada curso
+                List<Asignatura> listaAsignaturas = null;
+                c.Asignaturas.AddRange(listaAsignaturas);
+            }
         }
 
         private void CargarAlumnos()
