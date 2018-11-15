@@ -83,11 +83,22 @@ namespace Etapa1
             
             ImprimiendoColeccionesLista(escuela);
             
+            // eliminado solo un elemento dentro de la lista generica
+            EliminarUnElementoDeLista(escuela.CursosLista);
+            
+            ImprimiendoColeccionesLista(escuela);
+            
+            // Eliminando solo elementos que cumplan con criterios
+            // especificos
+            EliminarElementosDeListaEspecificos(escuela.CursosLista);
+            
+            ImprimiendoColeccionesLista(escuela);
+            
             // Eliminando todos los elementos de la lista
             EliminarElementosDeLista(escuela.CursosLista);
             
             ImprimiendoColeccionesLista(escuela);
-
+            
         }
 
         private static void ImprimirCursosWhile(Curso[] arregloCursos)
@@ -214,8 +225,39 @@ namespace Etapa1
 
         private static void EliminarElementosDeLista(List<Curso> cursosLista)
         {
+            WriteLine("Eliminando todos los elementos de la lista");
             // remover todos los elementos de la lista
             cursosLista.Clear();
+        }
+
+        private static void EliminarUnElementoDeLista(List<Curso> cursosLista)
+        {
+            WriteLine("Eliminando un elemento especifico de la lista.");
+            // removiendo un objecto especifico dentro de una lista
+            // generica
+
+            // como parametro es el objeto a ser eliminado
+            cursosLista.Remove(cursosLista[0]);
+        }
+
+         private static void EliminarElementosDeListaEspecificos(List<Curso> cursosLista)
+        {
+            //
+            WriteLine("Eliminar todos los elementos que cumplan con cierto criterio");
+
+            // eliminar elementos de la lista que cumplan con
+            // criterios especificados o satisfagan condiciones
+            // dentro de una funcion que se le pasa.
+            cursosLista.RemoveAll(Predicado);
+        }
+
+        private static bool Predicado(Curso curobj)
+        {
+            // funcion que entra en los parametros de RemoveAll
+            // para listas genericas, este devolvera los objectos
+            // de clase curso que devuelvan Tipos de Jornada
+            // de la enumeracion TiposJornadas exactamente: Noche
+            return curobj.Jornada == TiposJornadas.Noche;
         }
     }
 }
