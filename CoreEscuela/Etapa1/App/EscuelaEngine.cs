@@ -32,7 +32,7 @@ namespace CoreEscuela.App
             CargarListaAlumnos();
             CargarEvaluaciones();
 
-            TestingDeAleatoriedad();
+            //TestingDeAleatoriedad();
         }
 
         private void CargarEvaluaciones()
@@ -104,7 +104,10 @@ namespace CoreEscuela.App
             var alumnosPorCurso = randGenerator.Next(20, 40);
             
             // devuelve desde [numSalto: numSalto+alumnoPorCurso]
-            var alumni = GenerarAlumnosAlAzar().Skip(numeroDeSalto).Take(alumnosPorCurso).ToList();
+            var alumni = GenerarAlumnosAlAzar()
+                .OrderBy((alumno) => alumno.UniqueId)
+                .Skip(numeroDeSalto)
+                .Take(alumnosPorCurso).ToList();
             
             return alumni;
         }
@@ -147,11 +150,13 @@ namespace CoreEscuela.App
             // de forma aleatoria
             foreach (var c in Escuela.CursosLista)
             {
-                Console.WriteLine(c.Alumnos.Count);
-                
+                Console.WriteLine($"Alumnos totales en el curso {c.Nombre}: {c.Alumnos.Count}");
+                Console.WriteLine("ALUMNOS: ");
+                var counter = 0;
                 foreach (var a in c.Alumnos)
                 {
-                    Console.WriteLine(a.Nombre);
+                    counter++;
+                    Console.WriteLine($"Alumno {counter}: {a.Nombre}");
                 }
             }
         }
