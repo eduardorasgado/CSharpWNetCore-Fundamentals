@@ -32,7 +32,7 @@ namespace CoreEscuela.App
             CargarListaAlumnos();
             CargarEvaluaciones();
 
-            //TestingDeAleatoriedad();
+            TestingDeAleatoriedad();
         }
 
         /// <summary>
@@ -46,6 +46,46 @@ namespace CoreEscuela.App
         private void CargarEvaluaciones()
         {
             // RETO
+            foreach(var c in Escuela.CursosLista)
+            {
+                foreach(var al in c.Alumnos)
+                {
+                    List<Evaluacion> listaEvaluaciones= new List<Evaluacion>();
+                    var counter = 0;
+                    foreach(var a in c.Asignaturas)
+                    {
+                        var listaTemp = new List<Evaluacion>
+                        {
+                            new Evaluacion{ IdAlumno = al.UniqueId,
+                                            NombreAsignatura = a.Nombre,
+                                            Nota = 5.0f },
+                            new Evaluacion{ IdAlumno = al.UniqueId,
+                                            NombreAsignatura = a.Nombre,
+                                            Nota = 5.0f },
+                            new Evaluacion{ IdAlumno = al.UniqueId,
+                                            NombreAsignatura = a.Nombre,
+                                            Nota = 5.0f },
+                            new Evaluacion{ IdAlumno = al.UniqueId,
+                                            NombreAsignatura = a.Nombre,
+                                            Nota = 5.0f },
+                            new Evaluacion{ IdAlumno = al.UniqueId,
+                                            NombreAsignatura = a.Nombre,
+                                            Nota = 5.0f }
+                        };
+                        if(counter == 0)
+                        {
+                            listaEvaluaciones = listaTemp;
+                        }
+                        // asignando una nota
+                        else
+                        {
+                            listaEvaluaciones.AddRange(listaTemp);
+                        }
+                        counter++;
+                    }
+                    al.Evaluaciones = listaEvaluaciones;   
+                }
+            }
         }
 
         private void CargarAsignaturas()
@@ -58,7 +98,7 @@ namespace CoreEscuela.App
                     new Asignatura{ Nombre="Programación Básica" },
                     new Asignatura{ Nombre="Cálculo Diferencial" },
                     new Asignatura{ Nombre="Electrónica Digital" },
-                    new Asignatura{ Nombre = "Lenguajs de Programación" }
+                    new Asignatura{ Nombre = "Lenguajes de Programación" }
                 };
                 // no podemos usar AddRange hasta que definamos el contenido
                 // de curso.Asignaturas, ya que esta por el momento está
@@ -164,7 +204,14 @@ namespace CoreEscuela.App
                 foreach (var a in c.Alumnos)
                 {
                     counter++;
-                    Console.WriteLine($"Alumno {counter}: {a.Nombre}");
+                    Console.WriteLine($"Alumno {counter}: {a.Nombre}, Notas: {a.Evaluaciones.Count}");
+                    var Notes = "";
+                    foreach(var e in a.Evaluaciones)
+                    {
+                        
+                        Notes += $"A: {e.NombreAsignatura}, N: {e.Nota} ";
+                    }
+                    Console.WriteLine(Notes);
                 }
             }
         }
