@@ -77,6 +77,11 @@ namespace Etapa1
             Conditionals();
 
             ImprimiendoColeccionesLista(escuela);
+            
+            // exclusivamente para la lista generica
+            AgregarElementosALista(escuela.CursosLista);
+            
+            ImprimiendoColeccionesLista(escuela);
 
         }
 
@@ -168,6 +173,38 @@ namespace Etapa1
             {
                 Console.WriteLine(e);
             }
+        }
+
+        private static void AgregarElementosALista(List<Curso> cursosLista)
+        {
+            cursosLista.Add(new Curso()
+            {
+                Nombre = "402",
+                Jornada = TiposJornadas.Tarde
+            });
+            
+            // usando add range para agregar mas cursos a la vez
+            var cursosAdicionales = new List<Curso>()
+            {
+                new Curso (){
+                    Nombre = "502",
+                    Jornada = TiposJornadas.Tarde
+                },
+                new Curso (){
+                    Nombre = "602",
+                    Jornada = TiposJornadas.Noche
+                },
+                new Curso (){
+                    Nombre = "702",
+                    Jornada = TiposJornadas.Mañana
+                },
+            };
+            
+            // con add range podemos meter una lista 
+            // generica dentro de otra lista generica, pero
+            // solamente introducioendo los elementos que la
+            // conforman
+            cursosLista.AddRange(cursosAdicionales);
         }
     }
 }
