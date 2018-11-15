@@ -114,9 +114,11 @@ namespace Etapa1
         private static void ImprimirCursosEscuela(Escuela escuela)
         {
             WriteLine("-Cursos de la escuela 1-");
-            // merging sequential check with ?
-            // this is same as:
+            // verificacion por signo de interrogacion?
+            // esto es lo mismo que
             // escuela != null && escuela.Cursos != null
+            // y significa que no se va a verificar cursos a menos
+            // que escuela no sea nula
             if(escuela?.Cursos != null) ImprimirCursosForEach(escuela.Cursos);
         }
     }
