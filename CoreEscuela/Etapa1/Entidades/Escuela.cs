@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace CoreEscuela.Entidades
 {
@@ -25,7 +26,10 @@ namespace CoreEscuela.Entidades
         public TiposEscuelas TipoEscuela { get; set; }
         
         // array de objectos de la clase curso
-        public Curso[] Cursos { get; set; }
+        public Curso[] CursosPrimitive { get; set; }
+        
+        // coleccion de arreglos pero dentro de una lista generica
+        public List<Curso> CursosLista { get; set; }
         
         // Constructor de la escuela
         //public Escuela(string nombre, int año)

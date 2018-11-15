@@ -1,6 +1,8 @@
 ﻿// para poder usar WriteLine por si solo
 
 using System;
+// list, queue, stack, hashset, dictionary
+using System.Collections.Generic;
 using CoreEscuela.Entidades;
 using static System.Console;
 
@@ -29,6 +31,14 @@ namespace Etapa1
             
             var escuela2 = new Escuela("C# Academy", 2014, TiposEscuelas.Online, ciudad: "Monterrey");
             WriteLine(escuela2);
+
+            // from using System.Collections.Generic;
+            var listaCursos = new List<Curso>()
+            {
+                new Curso{ Nombre = "101" },
+                new Curso{ Nombre = "201" },
+                new Curso{ Nombre = "301" }
+            };
             
             // arreglo estatico de cursos
             //var arregloCursos = new Curso[]
@@ -41,9 +51,10 @@ namespace Etapa1
                 new Curso{ Nombre = "301" }
             };
 
-            escuela.Cursos = arregloCursos;
+            escuela.CursosPrimitive = arregloCursos;
             //escuela.Cursos = null;
             //escuela = null;
+            escuela.CursosLista = listaCursos;
             
             WriteLine("=============");
 
@@ -64,6 +75,8 @@ namespace Etapa1
             ImprimirCursosEscuela(escuela);
             
             Conditionals();
+
+            ImprimiendoColeccionesLista(escuela);
 
         }
 
@@ -123,7 +136,7 @@ namespace Etapa1
             // escuela != null && escuela.Cursos != null
             // y significa que no se va a verificar cursos a menos
             // que escuela no sea nula
-            if(escuela?.Cursos != null) ImprimirCursosForEach(escuela.Cursos);
+            if(escuela?.CursosPrimitive != null) ImprimirCursosForEach(escuela.CursosPrimitive);
         }
 
         private static void Conditionals()
@@ -144,6 +157,16 @@ namespace Etapa1
             else
             {
                 WriteLine($"It is a completely different number: {randNum}");    
+            }
+        }
+
+        private static void ImprimiendoColeccionesLista(Escuela escuela)
+        {
+            Console.WriteLine("---Imprimiendo cursos de una lista generica---");
+            var lista = escuela.CursosLista;
+            foreach (var e in lista)
+            {
+                Console.WriteLine(e);
             }
         }
     }
