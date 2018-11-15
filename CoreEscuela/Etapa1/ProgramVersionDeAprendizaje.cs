@@ -1,4 +1,4 @@
-﻿// para poder usar WriteLine por si solo
+// para poder usar WriteLine por si solo
 
 using System;
 // list, queue, stack, hashset, dictionary
@@ -6,12 +6,12 @@ using System.Collections.Generic;
 using CoreEscuela.Entidades;
 using static System.Console;
 
-namespace CoreEscuela
+namespace Etapa1
 {
     // la clase programa solo inicializa la ejecucion del programa
-    class Program
+    class ProgramLegacy
     {
-        static void Main(string[] args)
+        static void MainLegacy(string[] args)
         {
             var escuela = new Escuela("Cpp Academy", 2016);
             
@@ -40,9 +40,42 @@ namespace CoreEscuela
                 new Curso{ Nombre = "201" },
                 new Curso{ Nombre = "301" }
             };
+            
+            // arreglo estatico de cursos
+            //var arregloCursos = new Curso[]
+            Curso[] arregloCursos = 
+            {
+                // creando instancias de cursos
+                // y las introducimos en el arreglo
+                new Curso{ Nombre = "101" },
+                new Curso{ Nombre = "201" },
+                new Curso{ Nombre = "301" }
+            };
 
+            escuela.CursosPrimitive = arregloCursos;
+            //escuela.Cursos = null;
+            //escuela = null;
             escuela.CursosLista = listaCursos;
-           
+            
+            WriteLine("=============");
+
+            WriteLine("Presione enter: ");            
+            // leer una linea de entrada del usuario
+            var enter = ReadLine();
+            
+            // llamando al metodo de la clase Program
+            ImprimirCursosWhile(arregloCursos);
+            WriteLine("---------");
+            ImprimirCursosDoWhile(arregloCursos);
+            WriteLine("---------");
+            ImprimirCursosFor(arregloCursos);
+            WriteLine("---------");
+            ImprimirCursosForEach(arregloCursos);
+            WriteLine("---------");
+
+            ImprimirCursosEscuela(escuela);
+            
+            Conditionals();
 
             ImprimiendoColeccionesLista(escuela);
             
@@ -67,7 +100,87 @@ namespace CoreEscuela
             
             ImprimiendoColeccionesLista(escuela);
             
-        }    
+        }
+
+        private static void ImprimirCursosWhile(Curso[] arregloCursos)
+        {
+            WriteLine("Ciclo While");
+            // iterando con un ciclo while
+            var counter = 0;
+            while (counter < arregloCursos.Length)
+            {
+                WriteLine(arregloCursos[counter]);
+                counter++;
+            }
+        }
+        
+        private static void ImprimirCursosDoWhile(Curso[] arregloCursos)
+        {
+            WriteLine("Ciclo Do while");
+            // El ciclo do while se tiene que invocar al menos
+            // una vez
+            var counter = 0;
+            do
+            {
+                WriteLine(arregloCursos[counter]);
+                counter++;
+            } while (counter < arregloCursos.Length);
+        }
+        
+        private static void ImprimirCursosFor(Curso[] arregloCursos)
+        {
+            WriteLine("Ciclo For");
+            // iterando entre los miembros del arreglo para 
+            // imprimirlos
+            for (var i = 0; i < arregloCursos.Length; i++)
+            {
+                WriteLine(arregloCursos[i]);
+            }
+        }
+
+        private static void ImprimirCursosForEach(Curso[] arregloCursos)
+        {
+            WriteLine("ForEach loop");
+            // Iteración sobre un arreglo con un foreach
+            // Es muy seguro, pero no podemos tener el control del
+            // indice del arreglo
+            foreach (var e in arregloCursos)
+            {
+                WriteLine(e);
+            }
+        }
+
+        private static void ImprimirCursosEscuela(Escuela escuela)
+        {
+            WriteLine("-Cursos de la escuela 1-");
+            // verificacion por signo de interrogacion?
+            // esto es lo mismo que
+            // escuela != null && escuela.Cursos != null
+            // y significa que no se va a verificar cursos a menos
+            // que escuela no sea nula
+            if(escuela?.CursosPrimitive != null) ImprimirCursosForEach(escuela.CursosPrimitive);
+        }
+
+        private static void Conditionals()
+        {
+            // generando un numero aleatorio entre 0 y 10
+            var randGenerator = new Random();
+            int randNum = randGenerator.Next(0, 10);
+            
+            // poniendo a prueba los condicionales
+            if (randNum == 10)
+            {
+                WriteLine("Its 10");
+            }
+            else if (randNum == 5 )
+            {
+                WriteLine("Its 5");
+            }
+            else
+            {
+                WriteLine($"It is a completely different number: {randNum}");    
+            }
+        }
 
         private static void ImprimiendoColeccionesLista(Escuela escuela)
         {
@@ -174,13 +287,46 @@ namespace CoreEscuela
         {
             //
             WriteLine("Eliminar todos los elementos que cumplan con cierto criterio");
-     
+
+            // eliminar elementos de la lista que cumplan con
+            // criterios especificados o satisfagan condiciones
+            // dentro de una funcion que se le pasa.
+            
+            // delegado: devuelve solo booleano y recibe el tipo de
+            // dato del especificado
+            // Con el delegado Predicate aseguramos que la funcion
+            // que va a ser parametro de RemoveAll devuelva en efecto
+            // un booleando y reciba un objeto de clase Curso
+            
+            Predicate<Curso> algoritmo1 = Predicado;
+            cursosLista.RemoveAll(algoritmo1);
+            
             // same as above but using a delegate
             // elimina todos los que coinciden con un tipo de 
             // jornada: Mañana
+            cursosLista.RemoveAll(
+                delegate(Curso cur)
+                { return cur.Jornada == TiposJornadas.Mañana; });
+            
             // lo mismo pero con una expresion tipo lambda
             cursosLista.RemoveAll(
                 (Curso cur) => cur.Jornada == TiposJornadas.Weekend);
+        }
+
+        /// <summary>
+        /// Funcion de utilidad que le sirve a la funcion para remover
+        /// especificamente ciertos cursos bajo ciertos criterios.
+        /// Es usado y señalado por el predicate
+        /// </summary>
+        /// <param name="curobj"></param>
+        /// <returns></returns>
+        private static bool Predicado(Curso curobj)
+        {
+            // funcion que entra en los parametros de RemoveAll
+            // para listas genericas, este devolvera los objectos
+            // de clase curso que devuelvan Tipos de Jornada
+            // de la enumeracion TiposJornadas exactamente: Noche
+            return curobj.Jornada == TiposJornadas.Noche;
         }
     }
 }
