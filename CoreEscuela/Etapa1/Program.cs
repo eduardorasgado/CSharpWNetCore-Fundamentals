@@ -1,4 +1,6 @@
 ﻿// para poder usar WriteLine por si solo
+
+using System;
 using CoreEscuela.Entidades;
 using static System.Console;
 
@@ -60,6 +62,8 @@ namespace Etapa1
             WriteLine("---------");
 
             ImprimirCursosEscuela(escuela);
+            
+            Conditionals();
 
         }
 
@@ -120,6 +124,27 @@ namespace Etapa1
             // y significa que no se va a verificar cursos a menos
             // que escuela no sea nula
             if(escuela?.Cursos != null) ImprimirCursosForEach(escuela.Cursos);
+        }
+
+        private static void Conditionals()
+        {
+            // generando un numero aleatorio entre 0 y 10
+            var randGenerator = new Random();
+            int randNum = randGenerator.Next(0, 10);
+            
+            // poniendo a prueba los condicionales
+            if (randNum == 10)
+            {
+                WriteLine("Its 10");
+            }
+            else if (randNum == 5 )
+            {
+                WriteLine("Its 5");
+            }
+            else
+            {
+                WriteLine($"It is a completely different number: {randNum}");    
+            }
         }
     }
 }
