@@ -214,6 +214,18 @@ namespace Etapa1
                     Nombre = "702",
                     Jornada = TiposJornadas.Mañana
                 },
+                new Curso (){
+                    Nombre = "802",
+                    Jornada = TiposJornadas.Mañana
+                },
+                new Curso (){
+                    Nombre = "902",
+                    Jornada = TiposJornadas.Mañana
+                },
+                new Curso (){
+                    Nombre = "1002",
+                    Jornada = TiposJornadas.Noche
+                },
             };
             
             // con add range podemos meter una lista 
@@ -254,8 +266,16 @@ namespace Etapa1
             // Con el delegado Predicate aseguramos que la funcion
             // que va a ser parametro de RemoveAll devuelva en efecto
             // un booleando y reciba un objeto de clase Curso
+            
             Predicate<Curso> algoritmo1 = Predicado;
             cursosLista.RemoveAll(algoritmo1);
+            
+            // same as above but using a delegate
+            // elimina todos los que coinciden con un tipo de 
+            // jornada: Mañana
+            cursosLista.RemoveAll(
+                delegate(Curso cur)
+                { return cur.Jornada == TiposJornadas.Mañana; });
         }
 
         private static bool Predicado(Curso curobj)

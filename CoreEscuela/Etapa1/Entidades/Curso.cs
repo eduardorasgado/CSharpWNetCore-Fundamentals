@@ -15,7 +15,7 @@ namespace CoreEscuela.Entidades
 
         public override string ToString()
         {
-            return $"Nombre: {Nombre}, Id: {UniqueId}";
+            return $"Nombre: {Nombre}, Jornada: {Jornada}";
         }
     }
 }
