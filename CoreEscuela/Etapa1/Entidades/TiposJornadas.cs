@@ -4,6 +4,7 @@ namespace CoreEscuela.Entidades
     {
         Mañana,
         Tarde,
-        Noche
+        Noche,
+        Weekend
     }
 }

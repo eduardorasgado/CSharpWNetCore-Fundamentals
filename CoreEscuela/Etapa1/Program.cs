@@ -226,6 +226,11 @@ namespace Etapa1
                     Nombre = "1002",
                     Jornada = TiposJornadas.Noche
                 },
+                new Curso()
+                {
+                    Nombre = "1102",
+                    Jornada = TiposJornadas.Weekend
+                }
             };
             
             // con add range podemos meter una lista 
@@ -276,6 +281,10 @@ namespace Etapa1
             cursosLista.RemoveAll(
                 delegate(Curso cur)
                 { return cur.Jornada == TiposJornadas.Mañana; });
+            
+            // lo mismo pero con una expresion tipo lambda
+            cursosLista.RemoveAll(
+                (Curso cur) => cur.Jornada == TiposJornadas.Weekend);
         }
 
         private static bool Predicado(Curso curobj)
