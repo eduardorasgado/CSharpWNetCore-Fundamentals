@@ -248,7 +248,14 @@ namespace Etapa1
             // eliminar elementos de la lista que cumplan con
             // criterios especificados o satisfagan condiciones
             // dentro de una funcion que se le pasa.
-            cursosLista.RemoveAll(Predicado);
+            
+            // delegado: devuelve solo booleano y recibe el tipo de
+            // dato del especificado
+            // Con el delegado Predicate aseguramos que la funcion
+            // que va a ser parametro de RemoveAll devuelva en efecto
+            // un booleando y reciba un objeto de clase Curso
+            Predicate<Curso> algoritmo1 = Predicado;
+            cursosLista.RemoveAll(algoritmo1);
         }
 
         private static bool Predicado(Curso curobj)
