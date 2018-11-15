@@ -3,8 +3,10 @@
 using System;
 // list, queue, stack, hashset, dictionary
 using System.Collections.Generic;
-using CoreEscuela.Entidades;
-using static System.Console;
+using CoreEscuela.Entidades; // Escuela, Curso
+using CoreEscuela.App; // EscuelaEngine
+using static System.Console; // shortcut para WriteLine
+
 
 namespace CoreEscuela
 {
@@ -14,11 +16,16 @@ namespace CoreEscuela
         static void Main(string[] args)
         {
             //
+            //inicializando una instancia principal
+            var engine = new EscuelaEngine();
+            engine.Inicializar();
+            
+            MostrarCursosEscuela(engine.Escuela);
         }    
 
-        private static void ImprimiendoColeccionesLista(Escuela escuela)
+        private static void MostrarCursosEscuela(Escuela escuela)
         {
-            Console.WriteLine("---Imprimiendo cursos de una lista generica---");
+            Console.WriteLine("---Imprimiendo cursos de la Escuela---");
             var lista = escuela.CursosLista;
             foreach (var e in lista)
             {

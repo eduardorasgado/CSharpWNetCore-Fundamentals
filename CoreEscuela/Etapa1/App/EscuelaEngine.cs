@@ -19,7 +19,7 @@ namespace CoreEscuela.App
         
         // metodo responsable de inicializar todos los valores
         // dentro de neuestro programa
-        public void inicializar()
+        public void Inicializar()
         {
             Escuela = new Escuela("C# Academy", 2014,
                 TiposEscuelas.Online, ciudad: "Monterrey",
