@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using CoreEscuela.Entidades; // Escuela, Curso
 using CoreEscuela.App; // EscuelaEngine
+using CoreEscuela.Utilidades; // para el uso de Printer
 using static System.Console; // shortcut para WriteLine
 
 
@@ -26,11 +27,15 @@ namespace CoreEscuela
         private static void MostrarCursosEscuela(Escuela escuela)
         {
             Console.WriteLine("---Imprimiendo cursos de la Escuela---");
+            Printer.PrintLine();
+            
             var lista = escuela.CursosLista;
             foreach (var e in lista)
             {
                 Console.WriteLine(e);
             }
+            
+            Printer.PrintLine();
         }
 
         /// <summary>
