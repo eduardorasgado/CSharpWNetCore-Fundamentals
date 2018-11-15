@@ -191,6 +191,11 @@ namespace Etapa1
             }
         }
 
+        /// <summary>
+        /// Agrega elementos de tipo Curso a la lista generica
+        /// Para probar los métodos Add y AddRange
+        /// </summary>
+        /// <param name="cursosLista"></param>
         private static void AgregarElementosALista(List<Curso> cursosLista)
         {
             cursosLista.Add(new Curso()
@@ -240,6 +245,12 @@ namespace Etapa1
             cursosLista.AddRange(cursosAdicionales);
         }
 
+        /// <summary>
+        /// Eliminamos todos los elementos dentro de la lista genérica
+        /// Con ello liberamos espacio dentro de una Escuela dada en su
+        /// campo CursosLista
+        /// </summary>
+        /// <param name="cursosLista"></param>
         private static void EliminarElementosDeLista(List<Curso> cursosLista)
         {
             WriteLine("Eliminando todos los elementos de la lista");
@@ -247,6 +258,13 @@ namespace Etapa1
             cursosLista.Clear();
         }
 
+        /// <summary>
+        /// Eliminamos un elemento de la lista generica especificando
+        /// para ello, el objeto específico a eliminar, solo usada
+        /// cuando tenemos disponible el objeto de la lista a ser
+        /// eliminado
+        /// </summary>
+        /// <param name="cursosLista"></param>
         private static void EliminarUnElementoDeLista(List<Curso> cursosLista)
         {
             WriteLine("Eliminando un elemento especifico de la lista.");
@@ -257,6 +275,13 @@ namespace Etapa1
             cursosLista.Remove(cursosLista[0]);
         }
 
+        /// <summary>
+        /// Vemos como eliminar de la lista de cursos, ciertos cursos
+        /// que cumplan con un criterio especifico dado, con ello
+        /// tenemos una eliminacion rapida de elementos. De igual manera
+        /// se ponen a prueba Predicate, delegate y expresiones lambda.
+        /// </summary>
+        /// <param name="cursosLista"></param>
          private static void EliminarElementosDeListaEspecificos(List<Curso> cursosLista)
         {
             //
@@ -287,6 +312,13 @@ namespace Etapa1
                 (Curso cur) => cur.Jornada == TiposJornadas.Weekend);
         }
 
+        /// <summary>
+        /// Funcion de utilidad que le sirve a la funcion para remover
+        /// especificamente ciertos cursos bajo ciertos criterios.
+        /// Es usado y señalado por el predicate
+        /// </summary>
+        /// <param name="curobj"></param>
+        /// <returns></returns>
         private static bool Predicado(Curso curobj)
         {
             // funcion que entra en los parametros de RemoveAll

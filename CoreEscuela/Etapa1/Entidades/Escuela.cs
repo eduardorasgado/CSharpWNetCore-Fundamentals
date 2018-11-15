@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 namespace CoreEscuela.Entidades
 {
+    /// <summary>
+    /// Clase central de toda la solición, esta posee cursos distintos
+    /// por ofrecer.
+    /// </summary>
     public class Escuela
     {
         // atributos

@@ -2,6 +2,10 @@ using System;
 
 namespace CoreEscuela.Entidades
 {
+    /// <summary>
+    /// Clase que representa un curso dentro de una lista de cursos
+    /// que tiene una Escuela.
+    /// </summary>
     public class Curso
     {
         public string UniqueId { get; private set; }
