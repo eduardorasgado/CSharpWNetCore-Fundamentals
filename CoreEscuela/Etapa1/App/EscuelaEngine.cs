@@ -1,0 +1,41 @@
+using System.Collections.Generic;
+using CoreEscuela.Entidades;
+
+namespace CoreEscuela.App
+{
+    /// <summary>
+    /// Clase principal para hacer la administración y gestión de
+    /// toda la escuela
+    /// </summary>
+    public class EscuelaEngine
+    {
+        public Escuela Escuela { set; get; }
+
+        // constructor por default
+        public EscuelaEngine()
+        {
+            //
+        }
+        
+        // metodo responsable de inicializar todos los valores
+        // dentro de neuestro programa
+        public void inicializar()
+        {
+            Escuela = new Escuela("C# Academy", 2014,
+                TiposEscuelas.Online, ciudad: "Monterrey",
+                pais: "México");
+            
+            // de using System.Collections.Generic;
+            var listaCursos = new List<Curso>()
+            {
+                new Curso{ Nombre = "101", Jornada = TiposJornadas.Mañana},
+                new Curso{ Nombre = "201", Jornada = TiposJornadas.Tarde},
+                new Curso{ Nombre = "301", Jornada = TiposJornadas.Noche},
+                new Curso{ Nombre = "401", Jornada = TiposJornadas.Mañana},
+                new Curso{ Nombre = "501", Jornada = TiposJornadas.Weekend}
+            };
+
+            Escuela.CursosLista = listaCursos;
+        }
+    }
+}

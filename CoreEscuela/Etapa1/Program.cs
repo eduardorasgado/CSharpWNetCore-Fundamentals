@@ -13,60 +13,7 @@ namespace CoreEscuela
     {
         static void Main(string[] args)
         {
-            var escuela = new Escuela("Cpp Academy", 2016);
-            
-            WriteLine(escuela.Nombre);
-
-            escuela.Pais = "Mexico";
-            escuela.Ciudad = "CDMX";
-            
-            // asignacion a un atributo de tipo enum
-            escuela.TipoEscuela = TiposEscuelas.Online;
-
-            // llamando el metodo ToString de forma implicita
-            WriteLine(escuela);
-            
-            // Concatenando y split a una variable string
-            WriteLine("La " + escuela.Nombre.Split(": ")[1] +
-                              " ubicada en " + escuela.Pais + " de tipo: " + escuela.TipoEscuela);
-            
-            var escuela2 = new Escuela("C# Academy", 2014, TiposEscuelas.Online, ciudad: "Monterrey");
-            WriteLine(escuela2);
-
-            // from using System.Collections.Generic;
-            var listaCursos = new List<Curso>()
-            {
-                new Curso{ Nombre = "101" },
-                new Curso{ Nombre = "201" },
-                new Curso{ Nombre = "301" }
-            };
-
-            escuela.CursosLista = listaCursos;
-           
-
-            ImprimiendoColeccionesLista(escuela);
-            
-            // exclusivamente para la lista generica
-            AgregarElementosALista(escuela.CursosLista);
-            
-            ImprimiendoColeccionesLista(escuela);
-            
-            // eliminado solo un elemento dentro de la lista generica
-            EliminarUnElementoDeLista(escuela.CursosLista);
-            
-            ImprimiendoColeccionesLista(escuela);
-            
-            // Eliminando solo elementos que cumplan con criterios
-            // especificos
-            EliminarElementosDeListaEspecificos(escuela.CursosLista);
-            
-            ImprimiendoColeccionesLista(escuela);
-            
-            // Eliminando todos los elementos de la lista
-            EliminarElementosDeLista(escuela.CursosLista);
-            
-            ImprimiendoColeccionesLista(escuela);
-            
+            //
         }    
 
         private static void ImprimiendoColeccionesLista(Escuela escuela)
