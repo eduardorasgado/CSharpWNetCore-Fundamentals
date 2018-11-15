@@ -5,7 +5,7 @@ namespace CoreEscuela.Entidades
     /// </summary>
     public class Asignatura
     {
-        private string Nombre { set; get; }
+        public string Nombre { set; get; }
         
         public Asignatura() { } // constructor por default
     }

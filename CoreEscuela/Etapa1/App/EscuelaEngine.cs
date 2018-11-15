@@ -37,11 +37,17 @@ namespace CoreEscuela.App
         }
 
         private void CargarAsignaturas()
-        {
+        {   
             foreach (var c in Escuela.CursosLista)
             {
                 // cargando las asignaturas para cada curso
-                List<Asignatura> listaAsignaturas = null;
+                var listaAsignaturas = new List<Asignatura>()
+                {
+                    new Asignatura{ Nombre="Programación Básica"},
+                    new Asignatura{ Nombre="Cálculo Diferencial"},
+                    new Asignatura{ Nombre="Electrónica Digital"},
+                    new Asignatura{ Nombre = "Lenguajs de Programación"}
+                };
                 c.Asignaturas.AddRange(listaAsignaturas);
             }
         }
