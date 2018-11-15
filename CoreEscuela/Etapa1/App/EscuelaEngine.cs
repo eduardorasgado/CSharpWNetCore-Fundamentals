@@ -24,15 +24,38 @@ namespace CoreEscuela.App
             Escuela = new Escuela("C# Academy", 2014,
                 TiposEscuelas.Online, ciudad: "Monterrey",
                 pais: "México");
-            
+
+            CargarCursos();
+            CargarAsignaturas();
+            CargarAlumnos();
+            CargarEvaluaciones();
+        }
+
+        private void CargarEvaluaciones()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void CargarAsignaturas()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void CargarAlumnos()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void CargarCursos()
+        {
             // de using System.Collections.Generic;
             var listaCursos = new List<Curso>()
             {
-                new Curso{ Nombre = "101", Jornada = TiposJornadas.Mañana},
-                new Curso{ Nombre = "201", Jornada = TiposJornadas.Tarde},
-                new Curso{ Nombre = "301", Jornada = TiposJornadas.Noche},
-                new Curso{ Nombre = "401", Jornada = TiposJornadas.Mañana},
-                new Curso{ Nombre = "501", Jornada = TiposJornadas.Weekend}
+                new Curso {Nombre = "101", Jornada = TiposJornadas.Mañana},
+                new Curso {Nombre = "201", Jornada = TiposJornadas.Tarde},
+                new Curso {Nombre = "301", Jornada = TiposJornadas.Noche},
+                new Curso {Nombre = "401", Jornada = TiposJornadas.Mañana},
+                new Curso {Nombre = "501", Jornada = TiposJornadas.Weekend}
             };
 
             Escuela.CursosLista = listaCursos;

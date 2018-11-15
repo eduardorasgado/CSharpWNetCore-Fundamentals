@@ -21,6 +21,7 @@ namespace CoreEscuela
             var engine = new EscuelaEngine();
             engine.Inicializar();
             
+            WriteLine($"BIENVENIDO A {engine.Escuela.Nombre}");
             MostrarCursosEscuela(engine.Escuela);
         }
 

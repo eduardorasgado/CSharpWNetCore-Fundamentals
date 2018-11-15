@@ -28,9 +28,9 @@ namespace CoreEscuela.Utilidades
         /// <param name="title"></param>
         public static void PrintTitle(string title)
         {
-            PrintLine(title.Length);
-            WriteLine(title);
-            PrintLine(title.Length);
+            PrintLine(title.Length+4);
+            WriteLine($"| {title} |");
+            PrintLine(title.Length+4);
             
         }
     }
