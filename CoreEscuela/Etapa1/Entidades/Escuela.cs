@@ -7,18 +7,8 @@ namespace CoreEscuela.Entidades
     /// Clase central de toda la solición, esta posee cursos distintos
     /// por ofrecer.
     /// </summary>
-    public class Escuela
+    public class Escuela : EscuelaBase
     {
-        // atributos
-        private string nombre;
-        // propiedades de nombre
-        public string Nombre
-        {
-            get { return "Copia: " + nombre; }
-            // value es una keyword que tiene nombre por default
-            set { nombre = value.ToUpper(); }
-        }
-
         // cuando no hay cambios en el I/O de la variable
         // podemos hacer las propiedades con la siguiente estructura
         private int AñoCreacion { get; set; }
