@@ -7,7 +7,7 @@ namespace CoreEscuela.Entidades
     /// Clase central de toda la solición, esta posee cursos distintos
     /// por ofrecer.
     /// </summary>
-    public class Escuela : EscuelaBase
+    public class Escuela : EscuelaBase, ILugar
     {
         // cuando no hay cambios en el I/O de la variable
         // podemos hacer las propiedades con la siguiente estructura
@@ -24,6 +24,8 @@ namespace CoreEscuela.Entidades
         
         // coleccion de arreglos pero dentro de una lista generica
         public List<Curso> CursosLista { get; set; }
+        
+        public string Direccion { set; get; }
         
         // Constructor de la escuela
         //public Escuela(string nombre, int año)
@@ -49,6 +51,11 @@ namespace CoreEscuela.Entidades
             return $"Nombre: \"{Nombre}\"," +
                    $" Tipo: {TipoEscuela}{Environment.NewLine}" +
                    $" Pais: {Pais}, Ciudad: {Ciudad}";
+        }
+
+        public void LimpiarLugar()
+        {
+            //
         }
     }
 }
