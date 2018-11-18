@@ -94,8 +94,8 @@ namespace CoreEscuela
                 true, true, false, false);    
             //(traerEvaluaciones:false);
 
-            // solo traer conteo de cursos + todoos los objetos
-            var allFromBase2 = engine.GetObjectosEscuelaBases(out var cc);
+            // solo traer conteo de cursos + cursos
+            var allFromBase2 = engine.GetObjectosEscuelaBases(out var cc, out var ca, true, false, true, false);
             
             WriteLine($"Numero de datos: {allFromBase.Count}");
             WriteLine($"Numero de cursos: {ccursos}");

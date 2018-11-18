@@ -212,6 +212,8 @@ namespace CoreEscuela.App
             }
         }
 
+        #region GetObjectosEscuelaBases
+        
         public List<EscuelaBase> GetObjectosEscuelaBases(
             // sobrecaga para que no se llame los parametros de salida
             // parametros de entrada
@@ -222,9 +224,10 @@ namespace CoreEscuela.App
         )
         {
             //
-            int dummy = 0;
+            var dummy = 0;
             return GetObjectosEscuelaBases
-                (out dummy, out dummy, out dummy, out dummy);
+                (out dummy, out dummy, out dummy, out dummy,
+                traerCursos, traerAsignaturas, traerAlumnos, traerEvaluaciones);
         }
         
         public List<EscuelaBase> GetObjectosEscuelaBases(
@@ -238,9 +241,10 @@ namespace CoreEscuela.App
         )
         {
             //
-            int dummy = 0;
+            var dummy = 0;
             return GetObjectosEscuelaBases
-                (out conteoCursos, out dummy, out dummy, out dummy);
+                (out conteoCursos, out dummy, out dummy, out dummy,
+                traerCursos, traerAsignaturas, traerAlumnos, traerEvaluaciones);
         }
         
         public List<EscuelaBase> GetObjectosEscuelaBases(
@@ -255,10 +259,11 @@ namespace CoreEscuela.App
         )
         {
             //
-            int dummy = 0;
+            var dummy = 0;
             return GetObjectosEscuelaBases
                 (out conteoCursos, out conteoAsignaturas,
-                out dummy, out dummy);
+                out dummy, out dummy,
+                traerCursos, traerAsignaturas, traerAlumnos, traerEvaluaciones);
         }
         
         public List<EscuelaBase> GetObjectosEscuelaBases(
@@ -274,10 +279,11 @@ namespace CoreEscuela.App
         )
         {
             //
-            int dummy = 0;
+            var dummy = 0;
             return GetObjectosEscuelaBases
                 (out conteoCursos, out conteoAsignaturas,
-                out conteoAlumnos, out dummy);
+                out conteoAlumnos, out dummy,
+                traerCursos, traerAsignaturas, traerAlumnos, traerEvaluaciones);
         }
         
         public List<EscuelaBase> GetObjectosEscuelaBases(
@@ -294,11 +300,10 @@ namespace CoreEscuela.App
             )
         {
             conteoCursos = conteoAsignaturas = conteoAlumnos = conteoEvaluaciones = 0;
-            
-            var listaDeObjetosBase = new List<EscuelaBase>();
+
+            var listaDeObjetosBase = new List<EscuelaBase> {Escuela};
             // siempre va a llevar como minimo la escuela
-            listaDeObjetosBase.Add(Escuela);
-            
+
             if(traerCursos)
             {
                 listaDeObjetosBase.AddRange(Escuela.CursosLista);
@@ -329,5 +334,7 @@ namespace CoreEscuela.App
 
             return listaDeObjetosBase;
         }
+        
+        #endregion
     }
 }
