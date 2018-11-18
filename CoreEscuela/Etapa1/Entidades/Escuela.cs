@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CoreEscuela.Utilidades;
 
 namespace CoreEscuela.Entidades
 {
@@ -55,7 +56,13 @@ namespace CoreEscuela.Entidades
 
         public void LimpiarLugar()
         {
-            //
+            Printer.PrintLine();
+            Console.WriteLine("Limpiando dirección");
+            foreach (var curso in CursosLista)
+            {
+                curso.LimpiarLugar();
+            }
+            Console.WriteLine($"Escuela {Nombre} limpia");
         }
     }
 }

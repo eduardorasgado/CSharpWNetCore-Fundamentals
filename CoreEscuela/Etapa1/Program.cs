@@ -86,6 +86,10 @@ namespace CoreEscuela
                 WriteLine(ob);
             }
             
+            engine.Escuela.LimpiarLugar();
+            
+            // end main
+            
         }
 
         /// <summary>
