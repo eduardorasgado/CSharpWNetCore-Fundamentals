@@ -80,11 +80,18 @@ namespace CoreEscuela
             
             Printer.PrintTitle("Todos los objetos de EscuelaBase");
 
-            var (allFromBase, evalCount) = engine.GetObjectosEscuelaBases();    
+            var allFromBase = engine.GetObjectosEscuelaBases
+                (out var ccursos,
+                out var casignaturas,
+                out var callumnos,
+                out var cevaluacion);    
             //(traerEvaluaciones:false);
             
             WriteLine($"Numero de datos: {allFromBase.Count}");
-            WriteLine($"Numero de evaluaciones: {evalCount}");
+            WriteLine($"Numero de cursos: {ccursos}");
+            WriteLine($"Numero de asignaturas: {casignaturas}");
+            WriteLine($"Numero de alumnos: {callumnos}");
+            WriteLine($"Numero de evaluaciones: {cevaluacion}");
             WriteLine($"{allFromBase}");
             
             foreach (var ob in allFromBase)
