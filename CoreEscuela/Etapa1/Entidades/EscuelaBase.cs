@@ -2,7 +2,11 @@ using System;
 
 namespace CoreEscuela.Entidades
 {
-    public class EscuelaBase
+    /// <summary>
+    /// La clase es abstracta: Podemos heredar de ella pero no
+    /// podemos crear instancias de ella
+    /// </summary>
+    public abstract class EscuelaBase
     {
         public string Nombre { set; get; }
         public string UniqueId { private set; get; }

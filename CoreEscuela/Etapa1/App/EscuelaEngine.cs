@@ -8,8 +8,10 @@ namespace CoreEscuela.App
     /// <summary>
     /// Clase principal para hacer la administración y gestión de
     /// toda la escuela
+    /// Sealed: clase es sellada, no se puede heredar de escuela engine
+    /// pero si podemos crear instancias de ella
     /// </summary>
-    public class EscuelaEngine
+    public  sealed class EscuelaEngine
     {
         public Escuela Escuela { set; get; }
 
