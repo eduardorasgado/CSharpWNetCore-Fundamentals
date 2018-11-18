@@ -35,6 +35,14 @@ namespace CoreEscuela.App
             TestingDeAleatoriedad();
         }
 
+        private float GenerateRandomFloat()
+        {
+            var random = new Random();
+            var fullNumber = (float) (random.NextDouble() * 5);
+            var truncated = (float) Math.Round(fullNumber, 1);
+            return truncated;
+        }
+
         /// <summary>
         /// Cada curso tiene una lista de asignaturas y una lista de
         /// alumnos, por otro lado cada evaluacion esta mapeada con un alumno
@@ -58,10 +66,10 @@ namespace CoreEscuela.App
                         {
                             new Evaluacion{ IdAlumno = al.UniqueId,
                                             NombreAsignatura = a.Nombre,
-                                            Nota = 5.0f },
+                                            Nota = GenerateRandomFloat() },
                             new Evaluacion{ IdAlumno = al.UniqueId,
                                             NombreAsignatura = a.Nombre,
-                                            Nota = 5.0f },
+                                            Nota = GenerateRandomFloat() },
                             new Evaluacion{ IdAlumno = al.UniqueId,
                                             NombreAsignatura = a.Nombre,
                                             Nota = 5.0f },
