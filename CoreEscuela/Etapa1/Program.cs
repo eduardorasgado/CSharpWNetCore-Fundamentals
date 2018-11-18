@@ -54,9 +54,28 @@ namespace CoreEscuela
             // escuela
             WriteLine($"Obj evaluacion: {obj2.Nombre}");
             WriteLine($"Obj evaluacion: {obj2.GetType()}");
+            
+            // Este es un casting incorrecto
+            //alumnoTest = (Alumno) (EscuelaBase) evaluacion;
 
+            //obj = evaluacion;
+            Printer.PrintLine();
+            // manejando posibles errores con comprobacion de polimorfismo
+            if (obj is Alumno)
+            {
+                var alumnoRecover = (Alumno) obj;
+                WriteLine($"Alumno {alumnoRecover.Nombre} recuperado");
+            }
 
-
+            //si se deduce que objeto es transformado en Evaluacion
+            // devolvera la evaluacion, si no, devuelve nulo
+            Evaluacion evalRecover = obj2 as Evaluacion;
+            // devuelve null, ejemplo:
+            //Alumno evalRecover = obj2 as Alumno;
+            if (evalRecover != null)
+            {
+                WriteLine($"Evaluación Recuperada: {evalRecover.Nombre}");
+            }else { WriteLine("La conversión no es posible."); }
         }
 
         /// <summary>
