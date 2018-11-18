@@ -89,11 +89,19 @@ namespace CoreEscuela
                 out dummy,
                 //out var callumnos,
                 out dummy,
-                out var cevaluacion);    
+                out var cevaluacion,
+                // traer todos cursos y asignaturas
+                true, true, false, false);    
             //(traerEvaluaciones:false);
+
+            // solo traer conteo de cursos + todoos los objetos
+            var allFromBase2 = engine.GetObjectosEscuelaBases(out var cc);
             
             WriteLine($"Numero de datos: {allFromBase.Count}");
             WriteLine($"Numero de cursos: {ccursos}");
+            Printer.PrintLine();
+            WriteLine($"Numero de datos: {allFromBase2.Count}");
+            WriteLine($"Numero de cursos: {cc}");
             //WriteLine($"Numero de asignaturas: {casignaturas}");
             //WriteLine($"Numero de alumnos: {callumnos}");
             WriteLine($"Numero de evaluaciones: {cevaluacion}");

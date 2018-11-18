@@ -211,6 +211,74 @@ namespace CoreEscuela.App
                 }
             }
         }
+
+        public List<EscuelaBase> GetObjectosEscuelaBases(
+            // sobrecaga para que no se llame los parametros de salida
+            // parametros de entrada
+            bool traerCursos = true,
+            bool traerAsignaturas = true,
+            bool traerAlumnos = true,
+            bool traerEvaluaciones = true
+        )
+        {
+            //
+            int dummy = 0;
+            return GetObjectosEscuelaBases
+                (out dummy, out dummy, out dummy, out dummy);
+        }
+        
+        public List<EscuelaBase> GetObjectosEscuelaBases(
+            // sobrecaga para que no se llame los parametros de salida
+            // parametros de entrada
+            out int conteoCursos,
+            bool traerCursos = true,
+            bool traerAsignaturas = true,
+            bool traerAlumnos = true,
+            bool traerEvaluaciones = true
+        )
+        {
+            //
+            int dummy = 0;
+            return GetObjectosEscuelaBases
+                (out conteoCursos, out dummy, out dummy, out dummy);
+        }
+        
+        public List<EscuelaBase> GetObjectosEscuelaBases(
+            // sobrecaga para que no se llame los parametros de salida
+            // parametros de entrada
+            out int conteoCursos,
+            out int conteoAsignaturas,
+            bool traerCursos = true,
+            bool traerAsignaturas = true,
+            bool traerAlumnos = true,
+            bool traerEvaluaciones = true
+        )
+        {
+            //
+            int dummy = 0;
+            return GetObjectosEscuelaBases
+                (out conteoCursos, out conteoAsignaturas,
+                out dummy, out dummy);
+        }
+        
+        public List<EscuelaBase> GetObjectosEscuelaBases(
+            // sobrecaga para que no se llame los parametros de salida
+            // parametros de entrada
+            out int conteoCursos,
+            out int conteoAsignaturas,
+            out int conteoAlumnos,
+            bool traerCursos = true,
+            bool traerAsignaturas = true,
+            bool traerAlumnos = true,
+            bool traerEvaluaciones = true
+        )
+        {
+            //
+            int dummy = 0;
+            return GetObjectosEscuelaBases
+                (out conteoCursos, out conteoAsignaturas,
+                out conteoAlumnos, out dummy);
+        }
         
         public List<EscuelaBase> GetObjectosEscuelaBases(
             // parametros de salida
