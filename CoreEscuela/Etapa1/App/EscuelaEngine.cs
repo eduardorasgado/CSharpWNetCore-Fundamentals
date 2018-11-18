@@ -212,12 +212,13 @@ namespace CoreEscuela.App
             }
         }
         
-        public List<EscuelaBase> GetObjectosEscuelaBases(
+        public (List<EscuelaBase>, int) GetObjectosEscuelaBases(
             bool traerCursos =true,
             bool traerAsignaturas = true,
             bool traerAlumnos = true,
             bool traerEvaluaciones = true)
         {
+            var evaluacionesCounter = 0;
             var listaDeObjetosBase = new List<EscuelaBase>();
             // siempre va a llevar como minimo la escuela
             listaDeObjetosBase.Add(Escuela);
@@ -237,12 +238,16 @@ namespace CoreEscuela.App
                         {
                             // agregando todas las evaluaciones de cada alumno
                             listaDeObjetosBase.AddRange(a.Evaluaciones);
+                            foreach (var ee in a.Evaluaciones)
+                            {
+                                ++evaluacionesCounter;
+                            }
                         }
                     }
                 }
             }
             
-            return listaDeObjetosBase;
+            return (listaDeObjetosBase, evaluacionesCounter);
         }
     }
 }

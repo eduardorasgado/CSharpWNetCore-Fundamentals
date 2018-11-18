@@ -79,17 +79,20 @@ namespace CoreEscuela
             }else { WriteLine("La conversión no es posible."); }
             
             Printer.PrintTitle("Todos los objetos de EscuelaBase");
+
+            var (allFromBase, evalCount) = engine.GetObjectosEscuelaBases();    
+            //(traerEvaluaciones:false);
             
-            var allFromBase = engine.GetObjectosEscuelaBases
-                (traerEvaluaciones:false);
-            
-            WriteLine($"{allFromBase.Count}");
+            WriteLine($"Numero de datos: {allFromBase.Count}");
+            WriteLine($"Numero de evaluaciones: {evalCount}");
             WriteLine($"{allFromBase}");
             
             foreach (var ob in allFromBase)
             {
                 //WriteLine(ob);
             }
+            
+            Printer.PrintLine();
             
             // elemento implementado con una interfaz
             engine.Escuela.LimpiarLugar();
