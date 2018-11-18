@@ -212,13 +212,21 @@ namespace CoreEscuela.App
             }
         }
         
-        public (List<EscuelaBase>, int) GetObjectosEscuelaBases(
+        public List<EscuelaBase> GetObjectosEscuelaBases(
+            // parametros de salida
+            out int conteoCursos,
+            out int conteoAsignaturas,
+            out int conteoAlumnos,
+            out int conteoEvaluaciones,
+            // parametros de entrada
             bool traerCursos =true,
             bool traerAsignaturas = true,
             bool traerAlumnos = true,
-            bool traerEvaluaciones = true)
+            bool traerEvaluaciones = true
+            )
         {
-            var evaluacionesCounter = 0;
+            conteoCursos = conteoAsignaturas = conteoAlumnos = conteoEvaluaciones = 0;
+            
             var listaDeObjetosBase = new List<EscuelaBase>();
             // siempre va a llevar como minimo la escuela
             listaDeObjetosBase.Add(Escuela);
@@ -226,28 +234,32 @@ namespace CoreEscuela.App
             if(traerCursos)
             {
                 listaDeObjetosBase.AddRange(Escuela.CursosLista);
+                
+                conteoCursos += Escuela.CursosLista.Count;
+                
                 //Console.WriteLine("-----Trae toodo----");
                 foreach (var curso in Escuela.CursosLista)
                 {
                     // agregando asignaturas y alumnos de cada curso
                     if(traerAsignaturas) listaDeObjetosBase.AddRange(curso.Asignaturas);
                     if (traerAlumnos) listaDeObjetosBase.AddRange(curso.Alumnos);
+                    
+                    conteoAlumnos += curso.Alumnos.Count;
+                    conteoAsignaturas += curso.Asignaturas.Count;
+                    
                     if (traerEvaluaciones)
                     {
                         foreach (var a in curso.Alumnos)
                         {
                             // agregando todas las evaluaciones de cada alumno
                             listaDeObjetosBase.AddRange(a.Evaluaciones);
-                            foreach (var ee in a.Evaluaciones)
-                            {
-                                ++evaluacionesCounter;
-                            }
+                            conteoEvaluaciones += a.Evaluaciones.Count;
                         }
                     }
                 }
             }
-            
-            return (listaDeObjetosBase, evaluacionesCounter);
+
+            return listaDeObjetosBase;
         }
     }
 }
