@@ -59,37 +59,18 @@ namespace CoreEscuela.App
                 foreach(var al in c.Alumnos)
                 {
                     List<Evaluacion> listaEvaluaciones= new List<Evaluacion>();
-                    var counter = 0;
+                    
                     foreach(var a in c.Asignaturas)
                     {
-                        var listaTemp = new List<Evaluacion>
+                        var listaTemp = new List<Evaluacion>();
+                        for (var i = 0; i < 5; ++i)
                         {
-                            new Evaluacion{ IdAlumno = al.UniqueId,
-                                            NombreAsignatura = a.Nombre,
-                                            Nota = GenerateRandomFloat() },
-                            new Evaluacion{ IdAlumno = al.UniqueId,
-                                            NombreAsignatura = a.Nombre,
-                                            Nota = GenerateRandomFloat() },
-                            new Evaluacion{ IdAlumno = al.UniqueId,
-                                            NombreAsignatura = a.Nombre,
-                                            Nota = 5.0f },
-                            new Evaluacion{ IdAlumno = al.UniqueId,
-                                            NombreAsignatura = a.Nombre,
-                                            Nota = 5.0f },
-                            new Evaluacion{ IdAlumno = al.UniqueId,
-                                            NombreAsignatura = a.Nombre,
-                                            Nota = 5.0f }
-                        };
-                        if(counter == 0)
-                        {
-                            listaEvaluaciones = listaTemp;
+                            var eval = new Evaluacion{ IdAlumno = al.UniqueId,
+                                NombreAsignatura = a.Nombre,
+                                Nota = GenerateRandomFloat() };
+                            listaTemp.Add(eval);
                         }
-                        // asignando una nota
-                        else
-                        {
-                            listaEvaluaciones.AddRange(listaTemp);
-                        }
-                        counter++;
+                        listaEvaluaciones.AddRange(listaTemp);
                     }
                     al.Evaluaciones = listaEvaluaciones;   
                 }
