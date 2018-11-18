@@ -34,7 +34,7 @@ namespace CoreEscuela.App
             CargarListaAlumnos();
             CargarEvaluaciones();
 
-            TestingDeAleatoriedad();
+            //TestingDeAleatoriedad();
         }
 
         private float GenerateRandomFloat()

@@ -23,6 +23,21 @@ namespace CoreEscuela
             
             WriteLine($"BIENVENIDO A {engine.Escuela.Nombre}");
             MostrarCursosEscuela(engine.Escuela);
+            
+            Printer.PrintTitle("Pruebas de polimorfismo");
+            var alumnoTest = new Alumno{Nombre = "Alan Smith"};
+
+            EscuelaBase obj = alumnoTest;
+            Printer.PrintTitle("Alumno");
+            WriteLine($"EB Alumno: {obj.Nombre}");
+            WriteLine($"EB Alumno: {obj.UniqueId}");
+            WriteLine($"EB Alumno: {obj.GetType()}");
+            
+            WriteLine($"Alumno: {alumnoTest.Nombre}");
+            WriteLine($"Alumno: {alumnoTest.UniqueId}");
+            WriteLine($"Alumno: {alumnoTest.GetType()}");
+            // no se puede hacer esto:
+            //obj.Evaluaciones;
         }
 
         /// <summary>
