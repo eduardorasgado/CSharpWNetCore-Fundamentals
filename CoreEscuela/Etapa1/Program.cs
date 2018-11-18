@@ -79,12 +79,16 @@ namespace CoreEscuela
             }else { WriteLine("La conversión no es posible."); }
             
             Printer.PrintTitle("Todos los objetos de EscuelaBase");
-            var allFromBase = engine.GetObjectosEscuelaBases();
+            
+            var allFromBase = engine.GetObjectosEscuelaBases
+                (traerEvaluaciones:false);
+            
             WriteLine($"{allFromBase.Count}");
             WriteLine($"{allFromBase}");
+            
             foreach (var ob in allFromBase)
             {
-                WriteLine(ob);
+                //WriteLine(ob);
             }
             
             // elemento implementado con una interfaz

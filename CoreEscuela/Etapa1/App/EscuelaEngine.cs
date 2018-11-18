@@ -211,22 +211,34 @@ namespace CoreEscuela.App
                 }
             }
         }
-
-        public List<EscuelaBase> GetObjectosEscuelaBases()
+        
+        public List<EscuelaBase> GetObjectosEscuelaBases(
+            bool traerCursos =true,
+            bool traerAsignaturas = true,
+            bool traerAlumnos = true,
+            bool traerEvaluaciones = true)
         {
             var listaDeObjetosBase = new List<EscuelaBase>();
-            //
+            // siempre va a llevar como minimo la escuela
             listaDeObjetosBase.Add(Escuela);
-            listaDeObjetosBase.AddRange(Escuela.CursosLista);
-            foreach (var curso in Escuela.CursosLista)
+            
+            if(traerCursos)
             {
-                // agregando asignaturas y alumnos de cada curso
-                listaDeObjetosBase.AddRange(curso.Asignaturas);
-                listaDeObjetosBase.AddRange(curso.Alumnos);
-                foreach (var a in curso.Alumnos)
+                listaDeObjetosBase.AddRange(Escuela.CursosLista);
+                //Console.WriteLine("-----Trae toodo----");
+                foreach (var curso in Escuela.CursosLista)
                 {
-                    // agregando todas las evaluaciones de cada alumno
-                    listaDeObjetosBase.AddRange(a.Evaluaciones);
+                    // agregando asignaturas y alumnos de cada curso
+                    if(traerAsignaturas) listaDeObjetosBase.AddRange(curso.Asignaturas);
+                    if (traerAlumnos) listaDeObjetosBase.AddRange(curso.Alumnos);
+                    if (traerEvaluaciones)
+                    {
+                        foreach (var a in curso.Alumnos)
+                        {
+                            // agregando todas las evaluaciones de cada alumno
+                            listaDeObjetosBase.AddRange(a.Evaluaciones);
+                        }
+                    }
                 }
             }
             
