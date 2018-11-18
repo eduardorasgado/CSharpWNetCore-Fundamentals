@@ -123,6 +123,8 @@ namespace CoreEscuela
             }
         }
 
+        #region Métodos de Elementos de Lista
+        
         /// <summary>
         /// Agrega elementos de tipo Curso a la lista generica
         /// Para probar los métodos Add y AddRange
@@ -226,5 +228,7 @@ namespace CoreEscuela
             cursosLista.RemoveAll(
                 (Curso cur) => cur.Jornada == TiposJornadas.Weekend);
         }
+
+        #endregion
     }
 }

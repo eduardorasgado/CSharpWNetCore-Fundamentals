@@ -37,6 +37,8 @@ namespace CoreEscuela.App
             //TestingDeAleatoriedad();
         }
 
+        #region Métodos de Carga
+
         private float GenerateRandomFloat()
         {
             var random = new Random();
@@ -184,6 +186,7 @@ namespace CoreEscuela.App
 
             Escuela.CursosLista = listaCursos;
         }
+        #endregion
 
         private void TestingDeAleatoriedad()
         {
