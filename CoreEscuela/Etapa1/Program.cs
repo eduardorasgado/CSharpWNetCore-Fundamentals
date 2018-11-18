@@ -25,19 +25,38 @@ namespace CoreEscuela
             MostrarCursosEscuela(engine.Escuela);
             
             Printer.PrintTitle("Pruebas de polimorfismo");
+            Printer.PrintTitle("Alumno");
+            
             var alumnoTest = new Alumno{Nombre = "Alan Smith"};
 
-            EscuelaBase obj = alumnoTest;
-            Printer.PrintTitle("Alumno");
-            WriteLine($"EB Alumno: {obj.Nombre}");
-            WriteLine($"EB Alumno: {obj.UniqueId}");
-            WriteLine($"EB Alumno: {obj.GetType()}");
-            
             WriteLine($"Alumno: {alumnoTest.Nombre}");
             WriteLine($"Alumno: {alumnoTest.UniqueId}");
             WriteLine($"Alumno: {alumnoTest.GetType()}");
+            
+            EscuelaBase obj = alumnoTest;
+            WriteLine($"EB Alumno: {obj.Nombre}");
+            WriteLine($"EB Alumno: {obj.UniqueId}");
+            WriteLine($"EB Alumno: {obj.GetType()}");
             // no se puede hacer esto:
             //obj.Evaluaciones;
+
+            Printer.PrintTitle("Evaluación");
+            var evaluacion = new Evaluacion
+                {Nombre = "Mates #1", Nota = 5.0f,
+                    Asignatura = new Asignatura{Nombre = "Mates"}};
+            WriteLine($"Evaluacion: {evaluacion.Nombre}");
+            WriteLine($"Evaluacion: {evaluacion.Nota}");
+            WriteLine($"Evaluacion: {evaluacion.Asignatura.Nombre}");
+            WriteLine($"Evaluacion: {evaluacion.GetType()}");
+
+            EscuelaBase obj2 = evaluacion;
+            // solo podemos acceder a los campos que aloja el objeto
+            // escuela
+            WriteLine($"Obj evaluacion: {obj2.Nombre}");
+            WriteLine($"Obj evaluacion: {obj2.GetType()}");
+
+
+
         }
 
         /// <summary>
