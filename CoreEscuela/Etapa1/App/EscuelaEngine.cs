@@ -65,8 +65,8 @@ namespace CoreEscuela.App
                         var listaTemp = new List<Evaluacion>();
                         for (var i = 0; i < 5; ++i)
                         {
-                            var eval = new Evaluacion{ IdAlumno = al.UniqueId,
-                                NombreAsignatura = a.Nombre,
+                            var eval = new Evaluacion{ Alumno = al,
+                                Asignatura = a,
                                 Nota = GenerateRandomFloat() };
                             listaTemp.Add(eval);
                         }
@@ -198,7 +198,7 @@ namespace CoreEscuela.App
                     foreach(var e in a.Evaluaciones)
                     {
                         
-                        Notes += $"A: {e.NombreAsignatura}, N: {e.Nota} ";
+                        Notes += $"A: {e.Asignatura.Nombre}, N: {e.Nota} ";
                     }
                     Console.WriteLine(Notes);
                 }
