@@ -80,17 +80,22 @@ namespace CoreEscuela
             
             Printer.PrintTitle("Todos los objetos de EscuelaBase");
 
+            // cuando no queremos toodos los parametros out que
+            // se pueden pedir, podemos usar parametros dummy
+            var dummy = 0;
             var allFromBase = engine.GetObjectosEscuelaBases
                 (out var ccursos,
-                out var casignaturas,
-                out var callumnos,
+                //out var casignaturas,
+                out dummy,
+                //out var callumnos,
+                out dummy,
                 out var cevaluacion);    
             //(traerEvaluaciones:false);
             
             WriteLine($"Numero de datos: {allFromBase.Count}");
             WriteLine($"Numero de cursos: {ccursos}");
-            WriteLine($"Numero de asignaturas: {casignaturas}");
-            WriteLine($"Numero de alumnos: {callumnos}");
+            //WriteLine($"Numero de asignaturas: {casignaturas}");
+            //WriteLine($"Numero de alumnos: {callumnos}");
             WriteLine($"Numero de evaluaciones: {cevaluacion}");
             WriteLine($"{allFromBase}");
             
