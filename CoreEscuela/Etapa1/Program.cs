@@ -78,7 +78,14 @@ namespace CoreEscuela
             }else { WriteLine("La conversión no es posible."); }
             
             Printer.PrintTitle("Todos los objetos de EscuelaBase");
-            WriteLine($"{engine.GetObjectosEscuelaBases().Count}");
+            var allFromBase = engine.GetObjectosEscuelaBases();
+            WriteLine($"{allFromBase.Count}");
+            WriteLine($"{allFromBase}");
+            foreach (var ob in allFromBase)
+            {
+                WriteLine(ob);
+            }
+            
         }
 
         /// <summary>
@@ -93,7 +100,7 @@ namespace CoreEscuela
             var lista = escuela.CursosLista;
             foreach (var e in lista)
             {
-                Console.WriteLine(e);
+                WriteLine(e);
             }
         }
 

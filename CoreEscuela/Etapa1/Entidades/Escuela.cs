@@ -46,7 +46,7 @@ namespace CoreEscuela.Entidades
         public override string ToString()
         {
             // concatenacion 
-            return $"Nombre: \"{Nombre.Split(": ")[1]}\"," +
+            return $"Nombre: \"{Nombre}\"," +
                    $" Tipo: {TipoEscuela}{Environment.NewLine}" +
                    $" Pais: {Pais}, Ciudad: {Ciudad}";
         }
