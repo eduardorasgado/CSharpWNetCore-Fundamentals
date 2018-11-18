@@ -212,9 +212,9 @@ namespace CoreEscuela.App
             }
         }
 
-        #region GetObjectosEscuelaBases
+        #region GetObjectosEscuelaBases -> Sobrecargas
         
-        public List<EscuelaBase> GetObjectosEscuelaBases(
+        public IReadOnlyList<EscuelaBase> GetObjectosEscuelaBases(
             // sobrecaga para que no se llame los parametros de salida
             // parametros de entrada
             bool traerCursos = true,
@@ -230,7 +230,7 @@ namespace CoreEscuela.App
                 traerCursos, traerAsignaturas, traerAlumnos, traerEvaluaciones);
         }
         
-        public List<EscuelaBase> GetObjectosEscuelaBases(
+        public IReadOnlyList<EscuelaBase> GetObjectosEscuelaBases(
             // sobrecaga para que no se llame los parametros de salida
             // parametros de entrada
             out int conteoCursos,
@@ -247,7 +247,7 @@ namespace CoreEscuela.App
                 traerCursos, traerAsignaturas, traerAlumnos, traerEvaluaciones);
         }
         
-        public List<EscuelaBase> GetObjectosEscuelaBases(
+        public IReadOnlyList<EscuelaBase> GetObjectosEscuelaBases(
             // sobrecaga para que no se llame los parametros de salida
             // parametros de entrada
             out int conteoCursos,
@@ -266,7 +266,7 @@ namespace CoreEscuela.App
                 traerCursos, traerAsignaturas, traerAlumnos, traerEvaluaciones);
         }
         
-        public List<EscuelaBase> GetObjectosEscuelaBases(
+        public IReadOnlyList<EscuelaBase> GetObjectosEscuelaBases(
             // sobrecaga para que no se llame los parametros de salida
             // parametros de entrada
             out int conteoCursos,
@@ -286,7 +286,7 @@ namespace CoreEscuela.App
                 traerCursos, traerAsignaturas, traerAlumnos, traerEvaluaciones);
         }
         
-        public List<EscuelaBase> GetObjectosEscuelaBases(
+        public IReadOnlyList<EscuelaBase> GetObjectosEscuelaBases(
             // parametros de salida
             out int conteoCursos,
             out int conteoAsignaturas,
@@ -332,7 +332,10 @@ namespace CoreEscuela.App
                 }
             }
 
-            return listaDeObjetosBase;
+            // entregando lista de solo lectura
+            // Se debe de declarar tambien en el tipo de retorno como
+            //IReadOnlyList<>
+            return listaDeObjetosBase.AsReadOnly();
         }
         
         #endregion
