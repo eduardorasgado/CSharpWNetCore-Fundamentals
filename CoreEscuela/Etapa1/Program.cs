@@ -76,6 +76,9 @@ namespace CoreEscuela
             {
                 WriteLine($"Evaluación Recuperada: {evalRecover.Nombre}");
             }else { WriteLine("La conversión no es posible."); }
+            
+            Printer.PrintTitle("Todos los objetos de EscuelaBase");
+            WriteLine($"{engine.GetObjectosEscuelaBases().Count}");
         }
 
         /// <summary>
