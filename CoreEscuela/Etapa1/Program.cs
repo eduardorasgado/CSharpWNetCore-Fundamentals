@@ -7,6 +7,7 @@ using CoreEscuela.Entidades; // Escuela, Curso
 using CoreEscuela.App; // EscuelaEngine
 using CoreEscuela.Utilidades; // para el uso de Printer
 using static System.Console; // shortcut para WriteLine
+using System.Linq;
 
 
 namespace CoreEscuela
@@ -86,7 +87,21 @@ namespace CoreEscuela
                 WriteLine(ob);
             }
             
+            // elemento implementado con una interfaz
             engine.Escuela.LimpiarLugar();
+            
+            // traer todos los objetos que tienen implementado
+            // la interfaz ILugar con un Linq
+            var listaILugar = from objeto in allFromBase
+                where objeto is ILugar
+                select objeto;
+            
+            WriteLine(listaILugar.Count());
+            
+            foreach (var e in listaILugar)
+            {
+                WriteLine(e);
+            }
             
             // end main
             
