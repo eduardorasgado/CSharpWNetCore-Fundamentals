@@ -36,8 +36,19 @@ namespace CoreEscuela.App
 
             //TestingDeAleatoriedad();
         }
-        
-        
+
+        public Dictionary<string, EscuelaBase> GetDiccionarioEscuelaBases()
+        {
+            var diccionario = new Dictionary<string, EscuelaBase>();
+            
+            diccionario.Add("Escuela", Escuela);
+            foreach (var curso in Escuela.CursosLista)
+            {
+                diccionario.Add($"Curso{curso.Nombre}", curso);
+            }
+
+            return diccionario;
+        }
 
         #region Métodos de Carga
 

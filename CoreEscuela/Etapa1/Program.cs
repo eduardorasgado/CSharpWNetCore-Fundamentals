@@ -24,36 +24,14 @@ namespace CoreEscuela
             
             WriteLine($"BIENVENIDO A {engine.Escuela.Nombre}");
             MostrarCursosEscuela(engine.Escuela);
+
+            var todosCursos = engine.GetDiccionarioEscuelaBases();
+            WriteLine(todosCursos.Count);
             
-            
-            Printer.PrintTitle("Diccionarios");
-            Dictionary<int, string> diccionario = new Dictionary<int, string>();
-            
-            // agregando valores
-            diccionario.Add(1, "Eduardo Rasgado");
-            diccionario.Add(2, "Mario Moreno");
-            diccionario[0] = "Isabela Turing";
-            // cada objeto tiene una llave valor pair
-            foreach (var keyValPair in diccionario)
+            foreach (var curso in todosCursos)
             {
-                Console.WriteLine($"Llave: {keyValPair.Key}, key: {keyValPair.Value}");
+                WriteLine(curso.ToString());
             }
-            
-            Printer.PrintTitle("Accesos a diccionario");
-            WriteLine(diccionario[1]);
-            
-            Printer.PrintTitle("Nuevo Diccionario");
-            var dicc = new Dictionary<string, string>();
-
-            dicc["a"] = "primera letra del abecedario";
-            WriteLine(dicc["a"]);
-            dicc["a"] = "conjuncion de asignacion de direccion";
-            WriteLine(dicc["a"]);
-            
-            // las llaves en un diccionario son irrepetibles
-            dicc.Add("b", "segunda letra del abecedario");
-
-
 
             // end main
 
