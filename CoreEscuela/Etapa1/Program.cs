@@ -25,113 +25,27 @@ namespace CoreEscuela
             WriteLine($"BIENVENIDO A {engine.Escuela.Nombre}");
             MostrarCursosEscuela(engine.Escuela);
             
-            Printer.PrintTitle("Pruebas de polimorfismo");
-            Printer.PrintTitle("Alumno");
             
-            var alumnoTest = new Alumno{Nombre = "Alan Smith"};
-
-            WriteLine($"Alumno: {alumnoTest.Nombre}");
-            WriteLine($"Alumno: {alumnoTest.UniqueId}");
-            WriteLine($"Alumno: {alumnoTest.GetType()}");
+            Printer.PrintTitle("Diccionarios");
+            Dictionary<int, string> diccionario = new Dictionary<int, string>();
             
-            EscuelaBase obj = alumnoTest;
-            WriteLine($"EB Alumno: {obj.Nombre}");
-            WriteLine($"EB Alumno: {obj.UniqueId}");
-            WriteLine($"EB Alumno: {obj.GetType()}");
-            // no se puede hacer esto:
-            //obj.Evaluaciones;
-
-            Printer.PrintTitle("Evaluación");
-            var evaluacion = new Evaluacion
-                {Nombre = "Mates #1", Nota = 5.0f,
-                    Asignatura = new Asignatura{Nombre = "Mates"}};
-            WriteLine($"Evaluacion: {evaluacion.Nombre}");
-            WriteLine($"Evaluacion: {evaluacion.Nota}");
-            WriteLine($"Evaluacion: {evaluacion.Asignatura.Nombre}");
-            WriteLine($"Evaluacion: {evaluacion.GetType()}");
-
-            EscuelaBase obj2 = evaluacion;
-            // solo podemos acceder a los campos que aloja el objeto
-            // escuela
-            WriteLine($"Obj evaluacion: {obj2.Nombre}");
-            WriteLine($"Obj evaluacion: {obj2.GetType()}");
-            
-            // Este es un casting incorrecto
-            //alumnoTest = (Alumno) (EscuelaBase) evaluacion;
-
-            //obj = evaluacion;
-            Printer.PrintLine();
-            // manejando posibles errores con comprobacion de polimorfismo
-            if (obj is Alumno)
+            // agregando valores
+            diccionario.Add(1, "Eduardo Rasgado");
+            diccionario.Add(2, "Mario Moreno");
+            diccionario[0] = "Isabela Turing";
+            // cada objeto tiene una llave valor pair
+            foreach (var keyValPair in diccionario)
             {
-                var alumnoRecover = (Alumno) obj;
-                WriteLine($"Alumno {alumnoRecover.Nombre} recuperado");
-            }
-
-            //si se deduce que objeto es transformado en Evaluacion
-            // devolvera la evaluacion, si no, devuelve nulo
-            Evaluacion evalRecover = obj2 as Evaluacion;
-            // devuelve null, ejemplo:
-            //Alumno evalRecover = obj2 as Alumno;
-            if (evalRecover != null)
-            {
-                WriteLine($"Evaluación Recuperada: {evalRecover.Nombre}");
-            }else { WriteLine("La conversión no es posible."); }
-            
-            Printer.PrintTitle("Todos los objetos de EscuelaBase");
-
-            // cuando no queremos toodos los parametros out que
-            // se pueden pedir, podemos usar parametros dummy
-            var dummy = 0;
-            var allFromBase = engine.GetObjectosEscuelaBases
-                (out var ccursos,
-                //out var casignaturas,
-                out dummy,
-                //out var callumnos,
-                out dummy,
-                out var cevaluacion,
-                // traer todos cursos y asignaturas
-                true, true, false, false);    
-            //(traerEvaluaciones:false);
-
-            // solo traer conteo de cursos + cursos
-            var allFromBase2 = engine.GetObjectosEscuelaBases(out var cc, out var ca, true, false, true, false);
-            
-            WriteLine($"Numero de datos: {allFromBase.Count}");
-            WriteLine($"Numero de cursos: {ccursos}");
-            Printer.PrintLine();
-            WriteLine($"Numero de datos: {allFromBase2.Count}");
-            WriteLine($"Numero de cursos: {cc}");
-            //WriteLine($"Numero de asignaturas: {casignaturas}");
-            //WriteLine($"Numero de alumnos: {callumnos}");
-            WriteLine($"Numero de evaluaciones: {cevaluacion}");
-            WriteLine($"{allFromBase}");
-            
-            foreach (var ob in allFromBase)
-            {
-                //WriteLine(ob);
+                Console.WriteLine($"Llave: {keyValPair.Key}, key: {keyValPair.Value}");
             }
             
-            Printer.PrintLine();
+            Printer.PrintTitle("Accesos a diccionario");
+            WriteLine(diccionario[1]);
             
-            // elemento implementado con una interfaz
-            engine.Escuela.LimpiarLugar();
             
-            // traer todos los objetos que tienen implementado
-            // la interfaz ILugar con un Linq
-            var listaILugar = from objeto in allFromBase
-                where objeto is ILugar
-                select objeto;
-            
-            WriteLine(listaILugar.Count());
-            
-            foreach (var e in listaILugar)
-            {
-                WriteLine(e);
-            }
-            
+
             // end main
-            
+
         }
 
         /// <summary>

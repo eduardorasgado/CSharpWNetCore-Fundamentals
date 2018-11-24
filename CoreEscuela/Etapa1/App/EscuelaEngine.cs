@@ -36,6 +36,8 @@ namespace CoreEscuela.App
 
             //TestingDeAleatoriedad();
         }
+        
+        
 
         #region Métodos de Carga
 
