@@ -42,7 +42,18 @@ namespace CoreEscuela
             Printer.PrintTitle("Accesos a diccionario");
             WriteLine(diccionario[1]);
             
+            Printer.PrintTitle("Nuevo Diccionario");
+            var dicc = new Dictionary<string, string>();
+
+            dicc["a"] = "primera letra del abecedario";
+            WriteLine(dicc["a"]);
+            dicc["a"] = "conjuncion de asignacion de direccion";
+            WriteLine(dicc["a"]);
             
+            // las llaves en un diccionario son irrepetibles
+            dicc.Add("b", "segunda letra del abecedario");
+
+
 
             // end main
 
