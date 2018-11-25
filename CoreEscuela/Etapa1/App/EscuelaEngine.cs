@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using CoreEscuela.Entidades;
-using System.Linq; // para poder crear llamadas a database o querys
+using System.Linq;
+using CoreEscuela.Utilidades;
+
+// para poder crear llamadas a database o querys
 
 namespace CoreEscuela.App
 {
@@ -41,11 +44,13 @@ namespace CoreEscuela.App
         {
             foreach (var obj in dict)
             {
+                Printer.PrintTitle($"{obj.Key}");
+                
                 Console.WriteLine(obj);
                 // cada diccionario tiene una key y un value por pair o elemento
                 foreach (var v  in obj.Value)
                 {
-                    Console.WriteLine(v);
+                    Console.WriteLine($"{obj.Key} => {v}");
                 }
             }
         }
