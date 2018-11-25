@@ -17,7 +17,16 @@ namespace CoreEscuela
     {
         static void Main(string[] args)
         {
-            //
+            // multicast delegate
+            // puede tomar cuantos delegados le demos ->AppDomain...
+            // evento llamado cuando termina el programa
+            AppDomain.CurrentDomain.ProcessExit += AccionDelEvento;
+            // en la funcion lambda debemos enviarle en objeto y el sender de
+            // el evento o marcará error
+            AppDomain.CurrentDomain.ProcessExit += (o, s) => Printer.PrintTitle("Segundo evento agregado.");
+            // Podemos remover el primer evento
+            //AppDomain.CurrentDomain.ProcessExit -= AccionDelEvento;
+            
             //inicializando una instancia principal
             var engine = new EscuelaEngine();
             engine.Inicializar();
@@ -33,6 +42,12 @@ namespace CoreEscuela
 
         }
 
+        private static void AccionDelEvento(object sender, EventArgs e)
+        {
+            // evento puede ser trabajado como un delegado
+            Printer.PrintTitle("Evento llamado... Saliendo. beeep...beeeep...");
+        }
+        
         /// <summary>
         /// Mostrar en pantalla unn titulo referente a mostrar CUrsos
         /// de la escuela pero de forma decorada
