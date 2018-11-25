@@ -42,8 +42,8 @@ namespace CoreEscuela
             var myRep = new Reporter(engine.GetDiccionarioEscuelaBases());
             //var myRep = new Reporter(null);
 
-            var escuela = myRep.GetListaEvaluaciones();
-            if(escuela != null) WriteLine(escuela.ToList()[0]);
+            var evaluaciones = myRep.GetListaEvaluaciones();
+            if(evaluaciones.Any()) WriteLine(evaluaciones.ToList()[0]);
 
             // end main
 

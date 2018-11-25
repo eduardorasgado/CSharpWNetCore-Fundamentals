@@ -19,20 +19,17 @@ namespace CoreEscuela.App
             _diccionario = dict ?? throw new ArgumentException(nameof(dict));
         }
 
-        public IEnumerable<Escuela> GetListaEvaluaciones()
-        {
-            IEnumerable<Escuela> response;
-            
+        public IEnumerable<Evaluacion> GetListaEvaluaciones()
+        {  
             // manera segura de buscar un dato
-            if (_diccionario.TryGetValue(
-                    ValuesOfKeyDiccionario.Escuela,
-                    out IEnumerable<EscuelaBase> lista))
-            {
-                response = lista.Cast<Escuela>();
-                return response;
-            }
+            return (_diccionario.TryGetValue(
+                ValuesOfKeyDiccionario.Evaluacion,
+                out IEnumerable<EscuelaBase> lista))
+                // retornando una lista con todas las evalauciones
+                ? lista.ToList().Cast<Evaluacion>() 
+                // otherwise: retornando una lista vacia
+                : new List<Evaluacion>();
             
-            return null;
         }
     }
 }
