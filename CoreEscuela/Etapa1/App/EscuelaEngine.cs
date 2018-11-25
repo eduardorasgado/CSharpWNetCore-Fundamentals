@@ -40,7 +40,14 @@ namespace CoreEscuela.App
             //TestingDeAleatoriedad();
         }
 
-        public void MostrarDiccionario(Dictionary<ValuesOfKeyDiccionario, IEnumerable<EscuelaBase>> dict)
+        public void MostrarDiccionario
+            (Dictionary<ValuesOfKeyDiccionario,
+            IEnumerable<EscuelaBase>> dict, 
+                                      bool impEsc = true,
+                                      bool impCur = true,
+                                      bool impAsig = true,
+                                      bool impAl = true,
+                                      bool impEval =  true)
         {
             foreach (var obj in dict)
             {
@@ -50,7 +57,17 @@ namespace CoreEscuela.App
                 // cada diccionario tiene una key y un value por pair o elemento
                 foreach (var v  in obj.Value)
                 {
-                    Console.WriteLine($"{obj.Key} => {v}");
+                    // filtrando las Entidades solicitadas
+                    if (impEval && v is Evaluacion) 
+                        Console.WriteLine($"{obj.Key} => {v}");
+                    else if (impEsc && v is Escuela) 
+                        Console.WriteLine($"{obj.Key} => {v}");
+                    else if (impCur && v is Curso)
+                        Console.WriteLine($"{obj.Key} => {v}");
+                    else if (impAl && v is Alumno) 
+                        Console.WriteLine($"{obj.Key} => {v}");
+                    else if (impAsig && v is Asignatura) 
+                        Console.WriteLine($"{obj.Key} => {v}");
                 }
             }
         }
