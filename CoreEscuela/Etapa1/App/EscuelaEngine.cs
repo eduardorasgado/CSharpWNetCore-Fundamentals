@@ -40,9 +40,37 @@ namespace CoreEscuela.App
         public Dictionary<ValuesOfKeyDiccionario, IEnumerable<EscuelaBase>> GetDiccionarioEscuelaBases()
         {   
             var diccionario = new Dictionary<ValuesOfKeyDiccionario, IEnumerable<EscuelaBase>>();                            
-            
+            // agregando escuela
             diccionario.Add(LlavesDiccionario.ESCUELA, new[] {Escuela});
+            // agregando cursos
             diccionario.Add(LlavesDiccionario.CURSO, Escuela.CursosLista);
+            
+            // agregando asignaturas
+            var asignaturasLista = new List<Asignatura>();
+            foreach (var curso in Escuela.CursosLista)
+            {
+                asignaturasLista.AddRange(curso.Asignaturas);
+            }
+            diccionario.Add(LlavesDiccionario.ASIGNATURA, asignaturasLista);
+            
+            // agregando alumnos
+            var alumnosLista = new List<Alumno>();
+            foreach (var curso in Escuela.CursosLista)
+            {
+                alumnosLista.AddRange(curso.Alumnos);
+            }
+            diccionario.Add(LlavesDiccionario.ALUMNO, alumnosLista);
+            
+            // agregando evaluaciones
+            var evaluacionesLista = new List<Evaluacion>();
+            foreach (var curso in Escuela.CursosLista)
+            {
+                foreach (var alumno in curso.Alumnos)
+                {
+                    evaluacionesLista.AddRange(alumno.Evaluaciones);
+                }
+            }
+            diccionario.Add(LlavesDiccionario.EVALUACION, evaluacionesLista);
 
             return diccionario;
         }
