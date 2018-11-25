@@ -39,12 +39,18 @@ namespace CoreEscuela
             engine.MostrarDiccionario(todosEscuelaBases, 
                 impEval:false, impAl:false, impEsc:false);
 
+            Printer.PrintTitle("Test del Reporter");
             var myRep = new Reporter(engine.GetDiccionarioEscuelaBases());
             //var myRep = new Reporter(null);
 
             var evaluaciones = myRep.GetListaEvaluaciones();
             if(evaluaciones.Any()) WriteLine(evaluaciones.ToList()[0]);
 
+            var asignaturas = myRep.GetListaAsignaturas();
+            foreach (var asignatura in asignaturas.ToList())
+            {
+                WriteLine(asignatura);
+            }
             // end main
 
         }

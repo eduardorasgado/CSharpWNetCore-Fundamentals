@@ -31,5 +31,16 @@ namespace CoreEscuela.App
                 : new List<Evaluacion>();
             
         }
+
+        public IEnumerable<string> GetListaAsignaturas()
+        {
+            var listaEvaluaciones = GetListaEvaluaciones();
+            // linq query
+            return (from ev in listaEvaluaciones
+                where ev.Nota >= 4.0
+                select ev.Asignatura.Nombre).Distinct();
+            // investigar comparer o comparison
+            // Distinct permite traer nombres una unica vez
+        }
     }
 }
