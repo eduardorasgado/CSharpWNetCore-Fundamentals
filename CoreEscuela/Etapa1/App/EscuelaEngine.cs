@@ -58,16 +58,12 @@ namespace CoreEscuela.App
                 foreach (var v  in obj.Value)
                 {
                     // filtrando las Entidades solicitadas
-                    if (impEval && v is Evaluacion) 
-                        Console.WriteLine($"{obj.Key} => {v}");
-                    else if (impEsc && v is Escuela) 
-                        Console.WriteLine($"{obj.Key} => {v}");
-                    else if (impCur && v is Curso)
-                        Console.WriteLine($"{obj.Key} => {v}");
-                    else if (impAl && v is Alumno) 
-                        Console.WriteLine($"{obj.Key} => {v}");
-                    else if (impAsig && v is Asignatura) 
-                        Console.WriteLine($"{obj.Key} => {v}");
+                    if ((impEval && v is Evaluacion) 
+                        || (impEsc && v is Escuela)
+                        || (impCur && v is Curso)
+                        || (impAl && v is Alumno)
+                        || (impAsig && v is Asignatura)) 
+                        Console.WriteLine($"{obj.Key} => {v}"); 
                 }
             }
         }
