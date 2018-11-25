@@ -37,12 +37,12 @@ namespace CoreEscuela.App
             //TestingDeAleatoriedad();
         }
 
-        public Dictionary<string, IEnumerable<EscuelaBase>> GetDiccionarioEscuelaBases()
+        public Dictionary<ValuesOfKeyDiccionario, IEnumerable<EscuelaBase>> GetDiccionarioEscuelaBases()
         {   
-            var diccionario = new Dictionary<string, IEnumerable<EscuelaBase>>();                            
+            var diccionario = new Dictionary<ValuesOfKeyDiccionario, IEnumerable<EscuelaBase>>();                            
             
-            diccionario.Add("Escuela", new[] {Escuela});
-            diccionario.Add("Cursos", Escuela.CursosLista);
+            diccionario.Add(LlavesDiccionario.ESCUELA, new[] {Escuela});
+            diccionario.Add(LlavesDiccionario.CURSO, Escuela.CursosLista);
 
             return diccionario;
         }

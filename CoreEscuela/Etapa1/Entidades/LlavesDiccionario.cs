@@ -2,10 +2,10 @@ namespace CoreEscuela.Entidades
 {
     public struct LlavesDiccionario
     {
-        public const string CURSOS = "Cursos";
-        public const string ALUMNOS = "Alumnos";
-        public const string ASIGNATURAS = "Asignaturas";
-        public const string ESCUELA = "Escuela";
-        public const string EVALUACIONES = "Evaluaciones";
+        public const ValuesOfKeyDiccionario CURSO = ValuesOfKeyDiccionario.Curso;
+        public const ValuesOfKeyDiccionario ALUMNO = ValuesOfKeyDiccionario.Alumno;
+        public const ValuesOfKeyDiccionario ASIGNATURA = ValuesOfKeyDiccionario.Asignatura;
+        public const ValuesOfKeyDiccionario ESCUELA = ValuesOfKeyDiccionario.Escuela;
+        public const ValuesOfKeyDiccionario EVALUACION = ValuesOfKeyDiccionario.Evaluacion;
     }
 }
