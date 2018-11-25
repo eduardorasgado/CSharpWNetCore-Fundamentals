@@ -110,9 +110,8 @@ namespace CoreEscuela.App
 
         #region Métodos de Carga
 
-        private float GenerateRandomFloat()
+        private float GenerateRandomFloat(Random random)
         {
-            var random = new Random();
             var fullNumber = (float) (random.NextDouble() * 5);
             var truncated = (float) Math.Round(fullNumber, 1);
             return truncated;
@@ -128,6 +127,11 @@ namespace CoreEscuela.App
         /// </summary>
         private void CargarEvaluaciones()
         {
+            // generador de numeros aleatorios
+            // lo ponemos al inicio para no tener que generarlo cada vez que
+            // la funcion de nota aleatoria se llame
+            var random = new Random();
+            
             // RETO
             foreach(var c in Escuela.CursosLista)
             {
@@ -144,7 +148,7 @@ namespace CoreEscuela.App
                                 Nombre = $"{a.Nombre}: Evaluación #{i+1}",
                                 Alumno = al,
                                 Asignatura = a,
-                                Nota = GenerateRandomFloat() };
+                                Nota = GenerateRandomFloat(random) };
                             listaTemp.Add(eval);
                         }
                         listaEvaluaciones.AddRange(listaTemp);

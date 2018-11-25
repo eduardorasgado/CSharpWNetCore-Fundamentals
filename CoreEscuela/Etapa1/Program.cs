@@ -27,7 +27,7 @@ namespace CoreEscuela
 
             var todosEscuelaBases = engine.GetDiccionarioEscuelaBases();
             // filtros opcionales al traer el diccionario
-            engine.MostrarDiccionario(todosEscuelaBases, impEval:false, impAl:false, impEsc:false);
+            engine.MostrarDiccionario(todosEscuelaBases, impEval:true, impAl:false, impEsc:false);
 
             // end main
 
