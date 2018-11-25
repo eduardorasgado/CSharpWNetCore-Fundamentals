@@ -37,32 +37,40 @@ namespace CoreEscuela.App
             //TestingDeAleatoriedad();
         }
 
+        public void MostrarDiccionario(Dictionary<ValuesOfKeyDiccionario, IEnumerable<EscuelaBase>> dict)
+        {
+            foreach (var obj in dict)
+            {
+                Console.WriteLine(obj);
+                // cada diccionario tiene una key y un value por pair o elemento
+                foreach (var v  in obj.Value)
+                {
+                    Console.WriteLine(v);
+                }
+            }
+        }
+
         public Dictionary<ValuesOfKeyDiccionario, IEnumerable<EscuelaBase>> GetDiccionarioEscuelaBases()
         {   
             var diccionario = new Dictionary<ValuesOfKeyDiccionario, IEnumerable<EscuelaBase>>();                            
-            // agregando escuela
-            diccionario.Add(LlavesDiccionario.ESCUELA, new[] {Escuela});
-            // agregando cursos
-            diccionario.Add(LlavesDiccionario.CURSO, Escuela.CursosLista);
+            
+            var asignaturasLista = new List<Asignatura>();
+            var alumnosLista = new List<Alumno>();
+            var evaluacionesLista = new List<Evaluacion>();
             
             // agregando asignaturas
-            var asignaturasLista = new List<Asignatura>();
             foreach (var curso in Escuela.CursosLista)
             {
                 asignaturasLista.AddRange(curso.Asignaturas);
             }
-            diccionario.Add(LlavesDiccionario.ASIGNATURA, asignaturasLista);
             
             // agregando alumnos
-            var alumnosLista = new List<Alumno>();
             foreach (var curso in Escuela.CursosLista)
             {
                 alumnosLista.AddRange(curso.Alumnos);
             }
-            diccionario.Add(LlavesDiccionario.ALUMNO, alumnosLista);
             
             // agregando evaluaciones
-            var evaluacionesLista = new List<Evaluacion>();
             foreach (var curso in Escuela.CursosLista)
             {
                 foreach (var alumno in curso.Alumnos)
@@ -70,6 +78,13 @@ namespace CoreEscuela.App
                     evaluacionesLista.AddRange(alumno.Evaluaciones);
                 }
             }
+            
+            // agregando escuela
+            diccionario.Add(LlavesDiccionario.ESCUELA, new[] {Escuela});
+            // agregando cursos
+            diccionario.Add(LlavesDiccionario.CURSO, Escuela.CursosLista);
+            diccionario.Add(LlavesDiccionario.ASIGNATURA, asignaturasLista);
+            diccionario.Add(LlavesDiccionario.ALUMNO, alumnosLista);
             diccionario.Add(LlavesDiccionario.EVALUACION, evaluacionesLista);
 
             return diccionario;

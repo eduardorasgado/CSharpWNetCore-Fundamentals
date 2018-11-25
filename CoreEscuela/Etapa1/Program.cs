@@ -25,13 +25,8 @@ namespace CoreEscuela
             WriteLine($"BIENVENIDO A {engine.Escuela.Nombre}");
             MostrarCursosEscuela(engine.Escuela);
 
-            var todosCursos = engine.GetDiccionarioEscuelaBases();
-            WriteLine(todosCursos.Count);
-            
-            foreach (var curso in todosCursos)
-            {
-                WriteLine(curso.ToString());
-            }
+            var todosEscuelaBases = engine.GetDiccionarioEscuelaBases();
+            engine.MostrarDiccionario(todosEscuelaBases);
 
             // end main
 
