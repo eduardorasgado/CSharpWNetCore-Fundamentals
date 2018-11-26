@@ -65,6 +65,15 @@ namespace CoreEscuela
             }
 
             var alumnosNotas = myRep.GetPromedioAlumnosxAsignatura();
+            foreach (var asignatura in alumnosNotas)
+            {
+                Printer.PrintTitle(asignatura.Key);
+                
+                foreach (var alumno in asignatura.Value)
+                {
+                    WriteLine($"{alumno.AlumnoNombre} => {alumno.Promedio}");
+                }
+            }
             // end main
 
         }

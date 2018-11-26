@@ -75,38 +75,43 @@ namespace CoreEscuela.App
         }
 
         /// <summary>
-        /// Devuelve un diccionario con la estructura de Alumno y promedio total
+        /// Devuelve un diccionario con la estructura de
+        /// Asignatura: [Alumno y promedio] total
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string, IEnumerable<object>> GetPromedioAlumnosxAsignatura()
+        public Dictionary<string, IEnumerable<AlumnoPromedio>> 
+            GetPromedioAlumnosxAsignatura()
         {
             // devolvemos: <Alumno, Promedio>
-            var response = new Dictionary<string, IEnumerable<object>>();
+            var response = new Dictionary<string, IEnumerable<AlumnoPromedio>>();
             
             var dicEvalPorAsignatura = GetEvaluacionesPorAsignatura();
             foreach (var asignaturaConEvaluaciones in dicEvalPorAsignatura)
             {
-                var dummy = from ev in asignaturaConEvaluaciones.Value
+                var promAlumnosTemp = from ev in asignaturaConEvaluaciones.Value
                     // agrupamiento de datos
-                    group ev by ev.Alumno.UniqueId // por alumno
+                    group ev by new
+                    {
+                        ev.Alumno.UniqueId,
+                        ev.Alumno.Nombre
+                    }// por alumno
                     into grupoEvalsAlumno
                     // tipos anonimos
-                    select new
+                    select new AlumnoPromedio
                     {
                         // valor del UniqueId es Key
-                        AlumnoId = grupoEvalsAlumno.Key,
+                        AlumnoId = grupoEvalsAlumno.Key.UniqueId,
+                        AlumnoNombre = grupoEvalsAlumno.Key.Nombre,
                         Promedio = grupoEvalsAlumno
                             // average toma un delegate o lambda y se le
                             // especifica el campo a promediar
                             .Average((evaluacion) => evaluacion.Nota)
                     };
+               
+                // agregando elementos al diccionario
+                // asignatura, promedios
+                response.Add(asignaturaConEvaluaciones.Key, promAlumnosTemp);
                 
-                foreach (var item in dummy)
-                {
-                    Console.WriteLine($"{item.AlumnoId}: {item.Promedio}");
-                }
-                //var nombreAlumno =
-                //response.Add();
             }
             
             return response;
