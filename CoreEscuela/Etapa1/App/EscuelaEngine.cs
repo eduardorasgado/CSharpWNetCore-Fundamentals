@@ -16,7 +16,7 @@ namespace CoreEscuela.App
     /// </summary>
     public  sealed class EscuelaEngine
     {
-        public Escuela Escuela { set; get; }
+        public Escuela Escuela { private set; get; }
 
         // constructor por default
         public EscuelaEngine()
