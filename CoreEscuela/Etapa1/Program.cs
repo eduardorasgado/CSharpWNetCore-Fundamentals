@@ -81,8 +81,7 @@ namespace CoreEscuela
             //---------------------------Menu
             Printer.PrintTitle("Captura de una evaluación por consola.");
             var nuevaEvaluacion = new Evaluacion();
-            string nombre;
-            float nota;
+            string nombre, notaString = "";
             
             WriteLine("Ingresar el nombre de la evaluación");
             Printer.PresioneEnter();
@@ -97,8 +96,26 @@ namespace CoreEscuela
                 nuevaEvaluacion.Nombre = nombre.ToUpper();
                 WriteLine("El nombre de la evaluacion ha sido guardada exitosamente.");
             }
-            WriteLine("Ingrese la nota: ");
-            Printer.PresioneEnter();
+
+            // capturando una nota valida
+            while (true) {
+                WriteLine("Ingresar la  nota de la evaluación");
+                Printer.PresioneEnter();
+                notaString = Console.ReadLine();
+                try
+                {
+                    nuevaEvaluacion.Nota = float.Parse(notaString);
+                    if (nuevaEvaluacion.Nota < 0.0 || nuevaEvaluacion.Nota > 5.0) throw new FormatException();
+                    break;
+                }
+                catch (FormatException) {
+                    // en caso de no poder transformar a float
+                    // se repite la peticion
+                    WriteLine("[***Por favor ingrese una nota valida***]");
+                }}
+
+            WriteLine(nuevaEvaluacion.Nota);
+            WriteLine("La nota de la evaluacion ha sido guardada exitosamente.");
             
             // end main
 
