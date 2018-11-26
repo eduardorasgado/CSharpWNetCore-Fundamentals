@@ -73,5 +73,43 @@ namespace CoreEscuela.App
 
             return evaluacionesxAs;
         }
+
+        /// <summary>
+        /// Devuelve un diccionario con la estructura de Alumno y promedio total
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<string, IEnumerable<object>> GetPromedioAlumnosxAsignatura()
+        {
+            // devolvemos: <Alumno, Promedio>
+            var response = new Dictionary<string, IEnumerable<object>>();
+            
+            var dicEvalPorAsignatura = GetEvaluacionesPorAsignatura();
+            foreach (var asignaturaConEvaluaciones in dicEvalPorAsignatura)
+            {
+                var dummy = from ev in asignaturaConEvaluaciones.Value
+                    // agrupamiento de datos
+                    group ev by ev.Alumno.UniqueId // por alumno
+                    into grupoEvalsAlumno
+                    // tipos anonimos
+                    select new
+                    {
+                        // valor del UniqueId es Key
+                        AlumnoId = grupoEvalsAlumno.Key,
+                        Promedio = grupoEvalsAlumno
+                            // average toma un delegate o lambda y se le
+                            // especifica el campo a promediar
+                            .Average((evaluacion) => evaluacion.Nota)
+                    };
+                
+                foreach (var item in dummy)
+                {
+                    Console.WriteLine($"{item.AlumnoId}: {item.Promedio}");
+                }
+                //var nombreAlumno =
+                //response.Add();
+            }
+            
+            return response;
+        }
     }
 }

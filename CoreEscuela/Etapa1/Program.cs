@@ -40,6 +40,7 @@ namespace CoreEscuela
                 impEval:false, impAl:false, impEsc:false);
 
             Printer.PrintTitle("Test del Reporter");
+            // trae todos los objetos sin excepcion
             var myRep = new Reporter(engine.GetDiccionarioEscuelaBases());
             //var myRep = new Reporter(null);
 
@@ -61,8 +62,9 @@ namespace CoreEscuela
                 //{
                     //Write($"{ev.Asignatura} | ");
                 //}
-                
             }
+
+            var alumnosNotas = myRep.GetPromedioAlumnosxAsignatura();
             // end main
 
         }

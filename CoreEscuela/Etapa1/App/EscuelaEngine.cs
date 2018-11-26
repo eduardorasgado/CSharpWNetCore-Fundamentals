@@ -68,6 +68,12 @@ namespace CoreEscuela.App
             }
         }
 
+        /// <summary>
+        /// Junta todos los objetos que heredan de la clase abstracta EscuelaBase
+        /// Los agrupa en llaves por Escuela, Asignatura, Curso, Evaluaciones, Alumno
+        /// que podemos encontrar en el enum ValuesOfKeyDiccionario
+        /// </summary>
+        /// <returns></returns>
         public Dictionary<ValuesOfKeyDiccionario, IEnumerable<EscuelaBase>> GetDiccionarioEscuelaBases()
         {   
             var diccionario = new Dictionary<ValuesOfKeyDiccionario, IEnumerable<EscuelaBase>>();                            
