@@ -108,13 +108,18 @@ namespace CoreEscuela
                     if (nuevaEvaluacion.Nota < 0.0 || nuevaEvaluacion.Nota > 5.0) throw new FormatException();
                     break;
                 }
-                catch (FormatException) {
+                catch (FormatException)
+                {
                     // en caso de no poder transformar a float
                     // se repite la peticion
                     WriteLine("[***Por favor ingrese una nota valida***]");
-                }}
+                }
+                finally // se ejecuta inclusive esté el break
+                {
+                    Printer.PrintTitle("Beeep beeep beeep...");
+                }
+            }
 
-            WriteLine(nuevaEvaluacion.Nota);
             WriteLine("La nota de la evaluacion ha sido guardada exitosamente.");
             
             // end main
