@@ -46,7 +46,7 @@ namespace CoreEscuela
             var evaluaciones = myRep.GetListaEvaluaciones();
             if(evaluaciones.Any()) WriteLine(evaluaciones.ToList()[0]);
 
-            var asignaturas = myRep.GetListaAsignaturas(out IEnumerable<Evaluacion> dummy);
+            var asignaturas = myRep.GetListaAsignaturas();
             foreach (var asignatura in asignaturas.ToList())
             {
                 WriteLine(asignatura);

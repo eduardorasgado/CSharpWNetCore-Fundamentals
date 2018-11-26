@@ -32,6 +32,12 @@ namespace CoreEscuela.App
             
         }
 
+        public IEnumerable<string> GetListaAsignaturas()
+        {
+            // sobrecarga parametro vacio
+            return GetListaAsignaturas(out IEnumerable<Evaluacion> dummy);
+        }
+
         public IEnumerable<string> GetListaAsignaturas(
             out IEnumerable<Evaluacion>listaEvaluaciones)
         {
@@ -53,8 +59,9 @@ namespace CoreEscuela.App
         {
             var evaluacionesxAs = new Dictionary<string, IEnumerable<Evaluacion>>();
             
-            IEnumerable<Evaluacion> listaEvaluaciones;
-            var listaAsignaturas = GetListaAsignaturas(out listaEvaluaciones);
+            var listaAsignaturas = GetListaAsignaturas(
+                // para no hacer doble trabajo de llamar a GetListaEvaluaciones
+                out var listaEvaluaciones);
             
             foreach (var asignatura in listaAsignaturas)
             {
