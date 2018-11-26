@@ -36,47 +36,69 @@ namespace CoreEscuela
 
             var todosEscuelaBases = engine.GetDiccionarioEscuelaBases();
             // filtros opcionales al traer el diccionario
-            engine.MostrarDiccionario(todosEscuelaBases, 
-                impEval:false, impAl:false, impEsc:false);
+            //engine.MostrarDiccionario(todosEscuelaBases, 
+            //    impEval:false, impAl:false, impEsc:false);
 
-            Printer.PrintTitle("Test del Reporter");
+            //Printer.PrintTitle("Test del Reporter");
             // trae todos los objetos sin excepcion
             var myRep = new Reporter(engine.GetDiccionarioEscuelaBases());
             //var myRep = new Reporter(null);
 
             var evaluaciones = myRep.GetListaEvaluaciones();
-            if(evaluaciones.Any()) WriteLine(evaluaciones.ToList()[0]);
+            //if(evaluaciones.Any()) WriteLine(evaluaciones.ToList()[0]);
 
             var asignaturas = myRep.GetListaAsignaturas();
-            foreach (var asignatura in asignaturas.ToList())
-            {
-                WriteLine(asignatura);
-            }
+            //foreach (var asignatura in asignaturas.ToList())
+            //{
+            //    WriteLine(asignatura);
+            //}
 
             var evalXAsig = myRep.GetEvaluacionesPorAsignatura();
-            foreach (var e in evalXAsig)
-            {
-                Printer.PrintTitle(e.Key);
-                WriteLine($"{e.Key} => Cantidad de evaluaciones: {e.Value.Count()}");
-                //foreach (var ev in e.Value)
-                //{
-                    //Write($"{ev.Asignatura} | ");
-                //}
-            }
+            //foreach (var e in evalXAsig)
+            //{
+            //    Printer.PrintTitle(e.Key);
+            //    WriteLine($"{e.Key} => Cantidad de evaluaciones: {e.Value.Count()}");
+            //    //foreach (var ev in e.Value)
+            //    //{
+            //        //Write($"{ev.Asignatura} | ");
+            //    //}
+            //}
 
             var alumnosNotas = myRep.GetPromedioAlumnosxAsignatura();
-            foreach (var asignatura in alumnosNotas)
-            {
-                Printer.PrintTitle(asignatura.Key);
-                
-                foreach (var alumno in asignatura.Value)
-                {
-                    WriteLine($"{alumno.AlumnoNombre} => {alumno.Promedio}");
-                }
-            }
+            //foreach (var asignatura in alumnosNotas)
+            //{
+            //    Printer.PrintTitle(asignatura.Key);
+            //    
+            //    foreach (var alumno in asignatura.Value)
+            //    {
+            //        WriteLine($"{alumno.AlumnoNombre} => {alumno.Promedio}");
+            //    }
+            //}
 
             // mandando a reportear top 5 por cada asignatura
             var mejoresPromedios = myRep.mejoresPromediosPorAs(5);
+            
+            //---------------------------Menu
+            Printer.PrintTitle("Captura de una evaluación por consola.");
+            var nuevaEvaluacion = new Evaluacion();
+            string nombre;
+            float nota;
+            
+            WriteLine("Ingresar el nombre de la evaluación");
+            Printer.PresioneEnter();
+            nombre = Console.ReadLine();
+            
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                throw new ArgumentException("El valor del nombre no puede estar vacío.");
+            }
+            else
+            {
+                nuevaEvaluacion.Nombre = nombre.ToUpper();
+                WriteLine("El nombre de la evaluacion ha sido guardada exitosamente.");
+            }
+            WriteLine("Ingrese la nota: ");
+            Printer.PresioneEnter();
             
             // end main
 

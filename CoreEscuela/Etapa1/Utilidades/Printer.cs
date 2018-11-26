@@ -33,5 +33,10 @@ namespace CoreEscuela.Utilidades
             PrintLine(title.Length+4);
             
         }
+
+        public static void PresioneEnter()
+        {
+            Console.WriteLine("[Presione enter para continuar]");
+        }
     }
 }
