@@ -74,6 +74,10 @@ namespace CoreEscuela
                     WriteLine($"{alumno.AlumnoNombre} => {alumno.Promedio}");
                 }
             }
+
+            // mandando a reportear top 5 por cada asignatura
+            var mejoresPromedios = myRep.mejoresPromediosPorAs(5);
+            
             // end main
 
         }

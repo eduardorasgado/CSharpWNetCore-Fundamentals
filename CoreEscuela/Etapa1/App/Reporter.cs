@@ -55,7 +55,8 @@ namespace CoreEscuela.App
         ///asignatura: lista de evaluaciones
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string, IEnumerable<Evaluacion>> GetEvaluacionesPorAsignatura()
+        public Dictionary<string, IEnumerable<Evaluacion>> 
+            GetEvaluacionesPorAsignatura()
         {
             var evaluacionesxAs = new Dictionary<string, IEnumerable<Evaluacion>>();
             
@@ -110,11 +111,29 @@ namespace CoreEscuela.App
                
                 // agregando elementos al diccionario
                 // asignatura, promedios
-                response.Add(asignaturaConEvaluaciones.Key, promAlumnosTemp);
-                
+                response.Add(asignaturaConEvaluaciones.Key, promAlumnosTemp);   
             }
-            
             return response;
         }
+        
+        /// <summary>
+        /// RETO:
+        /// Crear un reporte que muestre solo los mejores x promedios por asignatura
+        /// X debe ser pasado como parametro
+        /// El reporte contiene la asignatura y una lista de los Top X alumnos
+        /// con su promedio
+        /// </summary>
+        /// <param name="X"></param>
+        /// <returns></returns>
+        public Dictionary<string, IEnumerable<AlumnoPromedio>> mejoresPromediosPorAs(int X)
+        {
+            //
+            var mejoresPromedios = new Dictionary<string, IEnumerable<AlumnoPromedio>>();
+            /*
+             * implementacion del reto aqui
+             */
+            return mejoresPromedios;
+        }
+        
     }
 }
